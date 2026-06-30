@@ -1,0 +1,103 @@
+{%- if cart.item_count == 0 -%}
+  <div class="container">
+    <div class="cart-empty">
+      <h1 class="cart-empty__heading">{{ 'cart.general.title' | t }}</h1>
+      <p>{{ 'cart.general.empty' | t }}</p>
+      <a class="btn btn--primary" href="{{ routes.collections_url }}" style="margin-top:1.5rem;">
+        {{ 'cart.general.continue_shopping' | t }}
+      </a>
+    </div>
+  </div>
+{%- else -%}
+  <div class="container">
+    <div class="cart-layout">
+
+      <!-- Line items -->
+      <div>
+        <h1 class="section__heading" style="text-align:left; margin-bottom:1.5rem;">
+          {{ 'cart.general.title' | t }}
+        </h1>
+        {%- form 'cart', cart, id: 'cart-form' -%}
+          <div class="cart-items">
+            {%- for item in cart.items -%}
+              <div class="cart-item">
+                <div class="cart-item__image">
+                  {%- if item.image -%}
+                    {{ item.image | image_url: width: 200 | image_tag:
+                      loading: 'lazy',
+                      alt: item.image.alt | default: item.title,
+                      widths: '100, 200',
+                      sizes: '100px'
+                    }}
+                  {%- endif -%}
+                </div>
+                <div>
+                  <p class="cart-item__title">{{ item.product.title }}</p>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="cart-item__variant">{{ item.variant.title }}</p>
+                  {%- endunless -%}
+                  <p class="cart-item__price">{{ item.final_line_price | money }}</p>
+                  <div class="cart-item__qty">
+                    <button class="cart-item__qty-btn" data-action="decrease" type="button" aria-label="{{ 'cart.general.decrease_quantity' | t }}">-</button>
+                    <input
+                      class="cart-item__qty-input"
+                      type="number"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      aria-label="{{ 'cart.general.item_quantity' | t }}"
+                    >
+                    <button class="cart-item__qty-btn" data-action="increase" type="button" aria-label="{{ 'cart.general.increase_quantity' | t }}">+</button>
+                  </div>
+                </div>
+                <button
+                  class="cart-item__remove"
+                  name="updates[]"
+                  value="0"
+                  type="button"
+                  onclick="this.previousElementSibling.querySelector('.cart-item__qty-input').value=0; document.getElementById('cart-form').submit();"
+                  aria-label="{{ 'cart.general.remove' | t }}: {{ item.title | escape }}"
+                >
+                  {{ 'cart.general.remove' | t }}
+                </button>
+              </div>
+            {%- endfor -%}
+          </div>
+          <button type="submit" name="update" class="visually-hidden">{{ 'cart.general.update' | t }}</button>
+        {%- endform -%}
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-summary">
+        <p class="cart-summary__title">{{ 'cart.general.order_summary' | t }}</p>
+        <div class="cart-summary__row">
+          <span>{{ 'cart.general.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="cart-summary__row" style="font-size:0.8125rem; opacity:0.7;">
+          {{ 'cart.general.taxes_and_shipping' | t }}
+        </p>
+        <div class="cart-summary__row cart-summary__row--total">
+          <span>{{ 'cart.general.total' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <a class="btn btn--primary cart-summary__checkout" href="{{ routes.checkout }}">
+          {{ 'cart.general.checkout' | t }}
+        </a>
+        <a class="btn btn--secondary" href="{{ routes.collections_url }}" style="width:100%; text-align:center; margin-top:0.75rem;">
+          {{ 'cart.general.continue_shopping' | t }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "div",
+  "class": "cart-wrapper",
+  "settings": []
+}
+{% endschema %}

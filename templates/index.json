@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "pbs-hero": {
+      "type": "pbs-hero",
+      "settings": {
+        "heading": "Wear Something That Means Something",
+        "subheading": "Every shirt printed by hand, made for you.",
+        "cta_label": "Shop Now",
+        "overlay_opacity": 40
+      }
+    },
+    "pbs-featured-products": {
+      "type": "pbs-featured-products",
+      "settings": {
+        "heading": "Shop Our Favs",
+        "products_to_show": 4
+      }
+    },
+    "pbs-collections-grid": {
+      "type": "pbs-collections-grid",
+      "blocks": {
+        "col-sports": { "type": "collection", "settings": { "label": "Sports" } },
+        "col-humor": { "type": "collection", "settings": { "label": "Humor" } },
+        "col-mama": { "type": "collection", "settings": { "label": "Mama" } },
+        "col-seasonal": { "type": "collection", "settings": { "label": "Seasonal" } },
+        "col-kiddos": { "type": "collection", "settings": { "label": "Kiddos" } },
+        "col-new": { "type": "collection", "settings": { "label": "New Releases" } }
+      },
+      "block_order": ["col-sports", "col-humor", "col-mama", "col-seasonal", "col-kiddos", "col-new"],
+      "settings": {
+        "heading": "Shop by Vibe"
+      }
+    },
+    "pbs-about": {
+      "type": "pbs-about",
+      "settings": {
+        "heading": "Made by Hand. Shipped with Love.",
+        "body": "<p>We're a small print shop where every design starts with an idea and ends with a shirt you'll actually want to wear. No factories, no middlemen — just us, some ink, and a whole lot of love.</p><p>Founded by Shay, PrintsByShay is built on the belief that what you wear should mean something.</p>",
+        "cta_label": "Learn More",
+        "cta_url": "/pages/about"
+      }
+    },
+    "pbs-email-signup": {
+      "type": "pbs-email-signup",
+      "settings": {
+        "heading": "Stay in the Loop",
+        "subtext": "New designs, restocks, and deals — straight to your inbox."
+      }
+    }
+  },
+  "order": [
+    "pbs-hero",
+    "pbs-featured-products",
+    "pbs-collections-grid",
+    "pbs-about",
+    "pbs-email-signup"
+  ]
+}
