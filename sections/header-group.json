@@ -1,0 +1,19 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "pbs-announcement-bar",
+      "settings": {
+        "announcement_text": "Handmade with love · Free shipping on orders over $50"
+      }
+    },
+    "header": {
+      "type": "pbs-header",
+      "settings": {
+        "logo_width": 180
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

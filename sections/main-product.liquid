@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="product-layout">
+
+    <!-- Media gallery -->
+    <div class="product-media">
+      <div class="product-media__main">
+        {%- if product.featured_image -%}
+          {{ product.featured_image | image_url: width: 1000 | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: product.featured_image.alt | default: product.title,
+            widths: '500, 750, 1000',
+            sizes: '(min-width: 768px) 45vw, 90vw',
+            id: 'product-main-image'
+          }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      {%- if product.images.size > 1 -%}
+        <div class="product-thumbnails">
+          {%- for image in product.images limit: 8 -%}
+            <button
+              class="product-thumbnail{% if forloop.first %} is-active{% endif %}"
+              data-src="{{ image | image_url: width: 1000 }}"
+              aria-label="{{ image.alt | default: product.title | escape }} {{ forloop.index }}"
+            >
+              {{ image | image_url: width: 144 | image_tag:
+                loading: 'lazy',
+                alt: image.alt | default: product.title,
+                widths: '72, 144',
+                sizes: '72px'
+              }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Product form -->
+    <div class="product-form">
+      <h1 class="product-form__title">{{ product.title }}</h1>
+
+      <p class="product-form__price">
+        {%- if product.compare_at_price > product.price -%}
+          <s>{{ product.compare_at_price | money }}</s>
+        {%- endif -%}
+        {{ product.price | money }}
+      </p>
+
+      {%- form 'product', product, id: 'product-form' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="product-form__option">
+              <label class="product-form__variant-label" for="option-{{ forloop.index }}">
+                {{ option.name }}
+              </label>
+              <select
+                id="option-{{ forloop.index }}"
+                class="product-form__select"
+                name="options[{{ option.name | escape }}]"
+              >
+                {%- for value in option.values -%}
+                  <option
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}selected{% endif %}
+                  >
+                    {{ value }}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <button
+          class="btn btn--primary product-form__add-to-cart"
+          type="submit"
+          name="add"
+          {%- unless product.selected_or_first_available_variant.available -%}disabled{%- endunless -%}
+        >
+          {%- if product.selected_or_first_available_variant.available -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </button>
+      {%- endform -%}
+
+      {%- if product.description != blank -%}
+        <div class="product-form__description rte">
+          {{ product.description }}
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "div",
+  "class": "product-wrapper"
+}
+{% endschema %}
