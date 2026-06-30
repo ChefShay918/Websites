@@ -1,0 +1,115 @@
+<section class="pbs-collections-grid section">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="collections-grid">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign coll = collections[block.settings.collection]
+            assign tile_label = block.settings.label | default: coll.title
+          -%}
+          <a
+            class="collection-tile"
+            href="{{ coll.url | default: routes.collections_url }}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if coll.image != blank -%}
+              {{ coll.image | image_url: width: 800 | image_tag:
+                class: 'collection-tile__image',
+                loading: 'lazy',
+                alt: tile_label,
+                widths: '400, 600, 800',
+                sizes: '(min-width: 1024px) 220px, (min-width: 640px) 45vw, 90vw'
+              }}
+            {%- elsif coll != blank and coll.products.first.featured_image != blank -%}
+              {{ coll.products.first.featured_image | image_url: width: 800 | image_tag:
+                class: 'collection-tile__image',
+                loading: 'lazy',
+                alt: tile_label,
+                widths: '400, 600, 800',
+                sizes: '(min-width: 1024px) 220px, (min-width: 640px) 45vw, 90vw'
+              }}
+            {%- else -%}
+              <div class="collection-tile__image collection-tile__image--placeholder">
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+            <div class="collection-tile__overlay">
+              <span class="collection-tile__label">{{ tile_label }}</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      {%- comment -%} Onboarding placeholder tiles {%- endcomment -%}
+      <div class="collections-grid">
+        {%- assign placeholder_collections = 'Sports,Humor,Mama,Seasonal,Kiddos,New Releases' | split: ',' -%}
+        {%- for title in placeholder_collections -%}
+          <div class="collection-tile">
+            <div class="collection-tile__image collection-tile__image--placeholder">
+              {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <div class="collection-tile__overlay">
+              <span class="collection-tile__label">{{ title }}</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections Grid",
+  "tag": "div",
+  "class": "collections-grid-wrapper",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Shop by Vibe"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Custom label",
+          "info": "Leave blank to use collection title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections Grid",
+      "settings": {
+        "heading": "Shop by Vibe"
+      },
+      "blocks": [
+        { "type": "collection", "settings": { "label": "Sports" } },
+        { "type": "collection", "settings": { "label": "Humor" } },
+        { "type": "collection", "settings": { "label": "Mama" } },
+        { "type": "collection", "settings": { "label": "Seasonal" } },
+        { "type": "collection", "settings": { "label": "Kiddos" } },
+        { "type": "collection", "settings": { "label": "New Releases" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

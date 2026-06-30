@@ -1,0 +1,103 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "search": {
+      "search": "Search"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous page",
+      "next": "Next page"
+    },
+    "404": {
+      "title": "Page Not Found",
+      "body": "The page you were looking for doesn't exist.",
+      "back_home": "Back to Home"
+    }
+  },
+  "sections": {
+    "announcement_bar": {
+      "label": "Announcement"
+    },
+    "header": {
+      "navigation_label": "Main navigation",
+      "cart_label": "Cart ({{ count }} items)",
+      "nav": {
+        "shop": "Shop",
+        "collections": "Collections",
+        "about": "About",
+        "contact": "Contact"
+      }
+    },
+    "hero": {
+      "label": "Hero banner",
+      "heading": "Wear Something That Means Something",
+      "subheading": "Every shirt printed by hand, made for you.",
+      "cta_label": "Shop Now"
+    },
+    "featured_products": {
+      "heading": "Shop Our Favs"
+    },
+    "collections_grid": {
+      "heading": "Shop by Vibe"
+    },
+    "about": {
+      "heading": "Made by Hand. Shipped with Love.",
+      "cta_label": "Learn More"
+    },
+    "email_signup": {
+      "heading": "Stay in the Loop",
+      "subtext": "New designs, restocks, and deals — straight to your inbox.",
+      "email_label": "Email address",
+      "email_placeholder": "Your email address",
+      "button_label": "Subscribe"
+    },
+    "footer": {
+      "tagline": "Tees made with heart, shipped with care.",
+      "quick_links": "Quick Links",
+      "link_shop": "Shop",
+      "link_collections": "Collections",
+      "link_contact": "Contact",
+      "link_faq": "FAQ",
+      "follow_us": "Follow Us",
+      "powered_by": "Powered by Shopify",
+      "payment_methods": "Payment methods"
+    },
+    "collection": {
+      "all_products": "All Products",
+      "product_count": "{{ count }} products",
+      "empty": "No products found."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "choose_options": "Choose Options",
+      "sale": "Sale"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue Shopping",
+      "checkout": "Check Out",
+      "remove": "Remove",
+      "update": "Update cart",
+      "order_summary": "Order Summary",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "taxes_and_shipping": "Taxes and shipping calculated at checkout",
+      "decrease_quantity": "Decrease quantity",
+      "increase_quantity": "Increase quantity",
+      "item_quantity": "Item quantity"
+    }
+  },
+  "onboarding": {
+    "product_title": "Sample Product"
+  }
+}

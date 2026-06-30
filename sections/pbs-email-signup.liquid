@@ -1,0 +1,62 @@
+<section class="pbs-email-signup">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="pbs-email-signup__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subtext != blank -%}
+      <p class="pbs-email-signup__subtext">{{ section.settings.subtext | escape }}</p>
+    {%- endif -%}
+
+    {%- form 'customer', id: 'pbs-newsletter-form', class: 'pbs-email-signup__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label for="pbs-newsletter-email" class="visually-hidden">
+        {{- 'sections.email_signup.email_label' | t -}}
+      </label>
+      <input
+        id="pbs-newsletter-email"
+        class="pbs-email-signup__input"
+        type="email"
+        name="contact[email]"
+        autocomplete="email"
+        placeholder="{{ 'sections.email_signup.email_placeholder' | t }}"
+        aria-required="true"
+        required
+      >
+      <button class="pbs-email-signup__btn" type="submit">
+        {{- 'sections.email_signup.button_label' | t -}}
+      </button>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email Signup",
+  "tag": "div",
+  "class": "email-signup-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay in the Loop"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "New designs, restocks, and deals — straight to your inbox."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Signup",
+      "settings": {
+        "heading": "Stay in the Loop",
+        "subtext": "New designs, restocks, and deals — straight to your inbox."
+      }
+    }
+  ]
+}
+{% endschema %}
