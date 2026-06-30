@@ -376,6 +376,13 @@ h4 { font-size: 1.125rem; }
   border-radius: 2px;
 }
 
+.product-card__badge--download {
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .product-card__info {
   padding: var(--spacing-sm);
   display: flex;

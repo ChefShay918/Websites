@@ -1,5 +1,5 @@
 {% comment %}
-  Renders a product card.
+  Renders a digital product card.
   Usage: {% render 'product-card', product: product %}
 {% endcomment %}
 <div class="product-card">
@@ -20,9 +20,9 @@
         </svg>
       </div>
     {% endif %}
-    {% if product.compare_at_price > product.price %}
-      <span class="product-card__badge">{{ 'products.product.sale' | t }}</span>
-    {% endif %}
+    <span class="product-card__badge product-card__badge--download">
+      {{ 'products.product.instant_download' | t }}
+    </span>
   </a>
   <div class="product-card__info">
     <h3 class="product-card__title">
@@ -34,8 +34,9 @@
       {% endif %}
       <span class="product-card__price--current">{{ product.price | money }}</span>
     </p>
+    <div class="product-card__file-types label-caps">PNG &middot; SVG &middot; PDF</div>
     <a href="{{ product.url }}" class="btn btn--primary product-card__btn">
-      {{ 'products.product.choose_options' | t }}
+      {{ 'products.product.instant_download' | t }}
     </a>
   </div>
 </div>
