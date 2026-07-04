@@ -22,6 +22,7 @@ const els = {
   fields: {
     id: document.getElementById("comic-id"),
     title: document.getElementById("field-title"),
+    image: document.getElementById("field-image"),
     series: document.getElementById("field-series"),
     issue: document.getElementById("field-issue"),
     publisher: document.getElementById("field-publisher"),
@@ -134,10 +135,17 @@ function render() {
       ? `Sold ${formatMoney(comic.soldPrice ?? comic.cost)}`
       : `Now ${formatMoney(comic.currentValue ?? comic.cost)}`;
 
+    const coverImg = comic.image
+      ? `<img class="comic-cover" src="${escapeHtml(comic.image)}" alt="" loading="lazy">`
+      : "";
+
     card.innerHTML = `
-      <div class="comic-info">
-        <h3>${escapeHtml(comic.title)}${comic.sold ? '<span class="sold-badge">Sold</span>' : ""}</h3>
-        <div class="comic-meta">${escapeHtml(metaParts)}</div>
+      <div class="comic-main">
+        ${coverImg}
+        <div class="comic-info">
+          <h3>${escapeHtml(comic.title)}${comic.sold ? '<span class="sold-badge">Sold</span>' : ""}</h3>
+          <div class="comic-meta">${escapeHtml(metaParts)}</div>
+        </div>
       </div>
       <div class="comic-figures">
         <div class="cost">Paid ${formatMoney(comic.cost)}</div>
@@ -163,6 +171,7 @@ function openModal(comic) {
     els.btnDelete.hidden = false;
     els.fields.id.value = comic.id;
     els.fields.title.value = comic.title;
+    els.fields.image.value = comic.image || "";
     els.fields.series.value = comic.series || "";
     els.fields.issue.value = comic.issue || "";
     els.fields.publisher.value = comic.publisher || "";
@@ -209,6 +218,7 @@ els.form.addEventListener("submit", (e) => {
   const comicData = {
     id,
     title: els.fields.title.value.trim(),
+    image: els.fields.image.value.trim(),
     series: els.fields.series.value.trim(),
     issue: els.fields.issue.value.trim(),
     publisher: els.fields.publisher.value.trim(),

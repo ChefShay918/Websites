@@ -170,6 +170,22 @@ input:focus, select:focus, textarea:focus {
   cursor: pointer;
 }
 
+.comic-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--surface-raised);
+}
+
+.comic-main {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+}
+
 .comic-card:hover {
   border-color: var(--accent);
 }
