@@ -27,7 +27,11 @@
         <span class="stat-value" id="stat-value">$0.00</span>
       </div>
       <div class="stat-card">
-        <span class="stat-label">Gain / Loss</span>
+        <span class="stat-label">Realized Gain / Loss</span>
+        <span class="stat-value" id="stat-realized">$0.00</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Total Gain / Loss</span>
         <span class="stat-value" id="stat-gain">$0.00</span>
       </div>
     </section>
@@ -35,6 +39,11 @@
     <section class="toolbar">
       <button id="btn-add" class="btn btn-primary">+ Add Comic</button>
       <input id="search" type="search" placeholder="Search title or series...">
+      <select id="filter-status">
+        <option value="all">All</option>
+        <option value="owned">Owned</option>
+        <option value="sold">Sold</option>
+      </select>
       <select id="sort">
         <option value="added-desc">Newest Added</option>
         <option value="title-asc">Title (A-Z)</option>
@@ -53,7 +62,9 @@
       <p>No comics yet. Add your first one to start tracking cost and value.</p>
     </section>
 
-    <section id="comic-list" class="comic-list"></section>
+    <section class="comic-list-scroll">
+      <div id="comic-list" class="comic-list"></div>
+    </section>
   </main>
 
   <div id="modal-backdrop" class="modal-backdrop" hidden>
@@ -98,6 +109,20 @@
       <label>Notes
         <textarea id="field-notes" rows="2" placeholder="Key issue, first appearance, condition notes..."></textarea>
       </label>
+
+      <label class="checkbox-field">
+        <input type="checkbox" id="field-sold">
+        Sold
+      </label>
+
+      <div class="field-row" id="sold-fields" hidden>
+        <label>Sold Price ($)
+          <input type="number" id="field-sold-price" step="0.01" min="0">
+        </label>
+        <label>Sold Date
+          <input type="date" id="field-sold-date">
+        </label>
+      </div>
 
       <div class="modal-actions">
         <button type="button" id="btn-delete" class="btn btn-danger" hidden>Delete</button>

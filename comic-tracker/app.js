@@ -4,10 +4,12 @@ const els = {
   statCount: document.getElementById("stat-count"),
   statCost: document.getElementById("stat-cost"),
   statValue: document.getElementById("stat-value"),
+  statRealized: document.getElementById("stat-realized"),
   statGain: document.getElementById("stat-gain"),
   list: document.getElementById("comic-list"),
   emptyState: document.getElementById("empty-state"),
   search: document.getElementById("search"),
+  filterStatus: document.getElementById("filter-status"),
   sort: document.getElementById("sort"),
   btnAdd: document.getElementById("btn-add"),
   btnExport: document.getElementById("btn-export"),
@@ -28,7 +30,11 @@ const els = {
     cost: document.getElementById("field-cost"),
     currentValue: document.getElementById("field-current-value"),
     notes: document.getElementById("field-notes"),
+    sold: document.getElementById("field-sold"),
+    soldPrice: document.getElementById("field-sold-price"),
+    soldDate: document.getElementById("field-sold-date"),
   },
+  soldFields: document.getElementById("sold-fields"),
 };
 
 function loadComics() {
@@ -50,27 +56,44 @@ function formatMoney(n) {
   return `$${n.toFixed(2)}`;
 }
 
+function effectiveValueOf(comic) {
+  if (comic.sold) return comic.soldPrice ?? comic.cost;
+  return comic.currentValue ?? comic.cost;
+}
+
 function gainOf(comic) {
-  const value = comic.currentValue ?? comic.cost;
-  return value - comic.cost;
+  return effectiveValueOf(comic) - comic.cost;
 }
 
 function renderStats(list) {
   const totalCost = list.reduce((sum, c) => sum + c.cost, 0);
-  const totalValue = list.reduce((sum, c) => sum + (c.currentValue ?? c.cost), 0);
-  const gain = totalValue - totalCost;
+  const holdingsValue = list
+    .filter((c) => !c.sold)
+    .reduce((sum, c) => sum + (c.currentValue ?? c.cost), 0);
+  const realizedGain = list
+    .filter((c) => c.sold)
+    .reduce((sum, c) => sum + gainOf(c), 0);
+  const totalGain = list.reduce((sum, c) => sum + gainOf(c), 0);
 
   els.statCount.textContent = list.length;
   els.statCost.textContent = formatMoney(totalCost);
-  els.statValue.textContent = formatMoney(totalValue);
-  els.statGain.textContent = `${gain >= 0 ? "+" : ""}${formatMoney(gain)}`;
-  els.statGain.classList.toggle("positive", gain > 0);
-  els.statGain.classList.toggle("negative", gain < 0);
+  els.statValue.textContent = formatMoney(holdingsValue);
+
+  els.statRealized.textContent = `${realizedGain >= 0 ? "+" : ""}${formatMoney(realizedGain)}`;
+  els.statRealized.classList.toggle("positive", realizedGain > 0);
+  els.statRealized.classList.toggle("negative", realizedGain < 0);
+
+  els.statGain.textContent = `${totalGain >= 0 ? "+" : ""}${formatMoney(totalGain)}`;
+  els.statGain.classList.toggle("positive", totalGain > 0);
+  els.statGain.classList.toggle("negative", totalGain < 0);
 }
 
 function getFilteredSorted() {
   const query = els.search.value.trim().toLowerCase();
+  const statusFilter = els.filterStatus.value;
   let list = comics.filter((c) => {
+    if (statusFilter === "owned" && c.sold) return false;
+    if (statusFilter === "sold" && !c.sold) return false;
     if (!query) return true;
     return (
       c.title.toLowerCase().includes(query) ||
@@ -83,7 +106,7 @@ function getFilteredSorted() {
     "added-desc": (a, b) => b.addedAt - a.addedAt,
     "title-asc": (a, b) => a.title.localeCompare(b.title),
     "cost-desc": (a, b) => b.cost - a.cost,
-    "value-desc": (a, b) => (b.currentValue ?? b.cost) - (a.currentValue ?? a.cost),
+    "value-desc": (a, b) => effectiveValueOf(b) - effectiveValueOf(a),
     "gain-desc": (a, b) => gainOf(b) - gainOf(a),
   };
   list.sort(sorters[sortMode] || sorters["added-desc"]);
@@ -99,7 +122,7 @@ function render() {
 
   for (const comic of list) {
     const card = document.createElement("div");
-    card.className = "comic-card";
+    card.className = `comic-card${comic.sold ? " is-sold" : ""}`;
     card.dataset.id = comic.id;
 
     const gain = gainOf(comic);
@@ -107,15 +130,18 @@ function render() {
     const metaParts = [comic.series, comic.issue ? `#${comic.issue}` : null, comic.publisher, comic.condition]
       .filter(Boolean)
       .join(" · ");
+    const valueLine = comic.sold
+      ? `Sold ${formatMoney(comic.soldPrice ?? comic.cost)}`
+      : `Now ${formatMoney(comic.currentValue ?? comic.cost)}`;
 
     card.innerHTML = `
       <div class="comic-info">
-        <h3>${escapeHtml(comic.title)}</h3>
+        <h3>${escapeHtml(comic.title)}${comic.sold ? '<span class="sold-badge">Sold</span>' : ""}</h3>
         <div class="comic-meta">${escapeHtml(metaParts)}</div>
       </div>
       <div class="comic-figures">
         <div class="cost">Paid ${formatMoney(comic.cost)}</div>
-        <div class="value">Now ${formatMoney(comic.currentValue ?? comic.cost)}</div>
+        <div class="value">${valueLine}</div>
         <div class="gain ${gainClass}">${gain >= 0 ? "+" : ""}${formatMoney(gain)}</div>
       </div>
     `;
@@ -145,14 +171,22 @@ function openModal(comic) {
     els.fields.cost.value = comic.cost;
     els.fields.currentValue.value = comic.currentValue ?? "";
     els.fields.notes.value = comic.notes || "";
+    els.fields.sold.checked = Boolean(comic.sold);
+    els.fields.soldPrice.value = comic.soldPrice ?? "";
+    els.fields.soldDate.value = comic.soldDate || "";
   } else {
     els.modalTitle.textContent = "Add Comic";
     els.btnDelete.hidden = true;
     els.fields.id.value = "";
   }
+  els.soldFields.hidden = !els.fields.sold.checked;
   els.modalBackdrop.hidden = false;
   els.fields.title.focus();
 }
+
+els.fields.sold.addEventListener("change", () => {
+  els.soldFields.hidden = !els.fields.sold.checked;
+});
 
 function closeModal() {
   els.modalBackdrop.hidden = true;
@@ -169,6 +203,8 @@ els.form.addEventListener("submit", (e) => {
   const id = els.fields.id.value || String(Date.now());
   const cost = parseFloat(els.fields.cost.value) || 0;
   const currentValueRaw = els.fields.currentValue.value;
+  const sold = els.fields.sold.checked;
+  const soldPriceRaw = els.fields.soldPrice.value;
 
   const comicData = {
     id,
@@ -181,6 +217,9 @@ els.form.addEventListener("submit", (e) => {
     cost,
     currentValue: currentValueRaw ? parseFloat(currentValueRaw) : null,
     notes: els.fields.notes.value.trim(),
+    sold,
+    soldPrice: sold && soldPriceRaw ? parseFloat(soldPriceRaw) : null,
+    soldDate: sold ? els.fields.soldDate.value : "",
     addedAt: Date.now(),
   };
 
@@ -206,6 +245,7 @@ els.btnDelete.addEventListener("click", () => {
 });
 
 els.search.addEventListener("input", render);
+els.filterStatus.addEventListener("change", render);
 els.sort.addEventListener("change", render);
 
 els.btnExport.addEventListener("click", () => {
