@@ -263,16 +263,24 @@ els.btnImport.addEventListener("change", (e) => {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = () => {
+    let imported;
     try {
-      const imported = JSON.parse(reader.result);
-      if (Array.isArray(imported)) {
-        comics = imported;
-        saveComics(comics);
-        render();
-      }
+      imported = JSON.parse(reader.result);
     } catch {
-      alert("Couldn't read that file — make sure it's a JSON export from this app.");
+      alert("Couldn't read that file — it doesn't look like valid JSON.");
+      return;
     }
+    if (!Array.isArray(imported)) {
+      alert("That file doesn't look like a comic guide list export (expected a list of comics).");
+      return;
+    }
+    comics = imported;
+    saveComics(comics);
+    render();
+    alert(`Imported ${comics.length} comic${comics.length === 1 ? "" : "s"}.`);
+  };
+  reader.onerror = () => {
+    alert("Couldn't read that file from disk. Try picking it again.");
   };
   reader.readAsText(file);
   e.target.value = "";
