@@ -77,7 +77,14 @@
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "choose_options": "Choose Options",
-      "sale": "Sale"
+      "instant_download": "Instant Download",
+      "sale": "Sale",
+      "whats_included_heading": "What's Included",
+      "whats_included_png": "High-res PNG (transparent background)",
+      "whats_included_svg": "Scalable SVG vector file",
+      "whats_included_pdf": "Print-ready PDF",
+      "whats_included_usage": "Personal & small commercial use license",
+      "digital_delivery_note": "Files delivered instantly via email after purchase."
     }
   },
   "cart": {

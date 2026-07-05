@@ -4,7 +4,7 @@
       "type": "pbs-hero",
       "settings": {
         "heading": "Wear Something That Means Something",
-        "subheading": "Every shirt printed by hand, made for you.",
+        "subheading": "Instant digital downloads — buy, download, create.",
         "cta_label": "Shop Now",
         "overlay_opacity": 40
       }
@@ -34,8 +34,8 @@
     "pbs-about": {
       "type": "pbs-about",
       "settings": {
-        "heading": "Made by Hand. Shipped with Love.",
-        "body": "<p>We're a small print shop where every design starts with an idea and ends with a shirt you'll actually want to wear. No factories, no middlemen — just us, some ink, and a whole lot of love.</p><p>Founded by Shay, PrintsByShay is built on the belief that what you wear should mean something.</p>",
+        "heading": "Designs Made with Heart. Yours Instantly.",
+        "body": "<p>Every design starts with an idea and ends up yours instantly — no waiting, no shipping, just a file ready to create with. We pour heart into every graphic so you don't have to start from scratch.</p><p>Founded by Shay, PrintsByShay is built on the belief that great design should be accessible, affordable, and yours the moment you pay for it.</p>",
         "cta_label": "Learn More",
         "cta_url": "/pages/about"
       }

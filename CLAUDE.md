@@ -42,10 +42,14 @@ https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:w
 
 ## Products
 
-- **Type:** Graphic tees
-- **Variants:** Size (S, M, L, XL, 2XL, 3XL) + Color (text input or dropdown — standard Shopify variant, no custom upload)
-- **Price point:** ~$28–$35
-- **No custom order flow** — customers pick from existing designs and select variants
+- **Type:** Digital design files (PNG, SVG, PDF)
+- **Delivery:** Instant download via Shopify Digital Downloads app (free app — must be installed)
+- **No physical variants** — no size or color options
+- **Product cards:** Show "Instant Download" badge instead of "Choose Options"
+- **Product pages:** Include a "What's Included" section — file types (PNG, SVG, PDF), dimensions, and usage rights
+- **Collections:** Sports, Humor, Mama, Seasonal, Kiddos, New Releases, Best Sellers
+- **Price point:** ~$3–$8 per design, bundle packs ~$15–$25
+- **No shipping required** — digital only
 
 ---
 
@@ -69,7 +73,7 @@ https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:w
 ### 3. Hero (`pbs-hero`)
 - Full-width banner
 - Headline: "Wear Something That Means Something"
-- Subtext: "Every shirt printed by hand, made for you."
+- Subtext: "Instant digital downloads — buy, download, create."
 - CTA button: "Shop Now" → `/collections/all`
 - Background: image with warm overlay, fallback to `--color-sand`
 - Schema settings: `heading`, `subheading`, `cta_label`, `cta_url`, `image`, `overlay_opacity`
@@ -77,7 +81,7 @@ https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:w
 ### 4. Featured Products (`pbs-featured-products`)
 - Section heading: "Shop Our Favs"
 - Product carousel / grid (4–6 products)
-- Each card: product image, title, price, "Choose Options" button
+- Each card: product image, title, price, "Instant Download" button
 - Schema settings: `heading`, `collection` (collection picker), `products_to_show` (range 2–12)
 
 ### 5. Collections Grid (`pbs-collections-grid`)
@@ -87,8 +91,8 @@ https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:w
 - Schema settings: `heading`, blocks of type `collection` (collection picker + label)
 
 ### 6. About Blurb (`pbs-about`)
-- Heading: "Made by Hand. Shipped with Love."
-- Body: 2–3 sentences about the brand — personal, warm tone
+- Heading: "Designs Made with Heart. Yours Instantly."
+- Body: 2–3 sentences about the brand — personal, warm tone focused on digital designs and instant delivery
 - Optional image (photo of shirts, workspace, etc.)
 - CTA: "Learn More" → `/pages/about` (optional)
 - Layout: text left, image right (or stacked on mobile)
