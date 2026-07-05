@@ -289,6 +289,15 @@ input:focus, select:focus, textarea:focus {
   width: auto;
 }
 
+.image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+}
+
 .modal-actions {
   display: flex;
   align-items: center;

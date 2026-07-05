@@ -23,6 +23,7 @@ const els = {
     id: document.getElementById("comic-id"),
     title: document.getElementById("field-title"),
     image: document.getElementById("field-image"),
+    imageUpload: document.getElementById("field-image-upload"),
     series: document.getElementById("field-series"),
     issue: document.getElementById("field-issue"),
     publisher: document.getElementById("field-publisher"),
@@ -36,6 +37,7 @@ const els = {
     soldDate: document.getElementById("field-sold-date"),
   },
   soldFields: document.getElementById("sold-fields"),
+  imagePreview: document.getElementById("image-preview"),
 };
 
 function loadComics() {
@@ -164,6 +166,61 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function compressImageFile(file, maxDim = 500, quality = 0.82) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > height && width > maxDim) {
+        height = Math.round((height * maxDim) / width);
+        width = maxDim;
+      } else if (height > maxDim) {
+        width = Math.round((width * maxDim) / height);
+        height = maxDim;
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+      URL.revokeObjectURL(objectUrl);
+      resolve(canvas.toDataURL("image/jpeg", quality));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error("Couldn't load that image."));
+    };
+    img.src = objectUrl;
+  });
+}
+
+function updateImagePreview() {
+  const value = els.fields.image.value.trim();
+  if (value) {
+    els.imagePreview.src = value;
+    els.imagePreview.hidden = false;
+  } else {
+    els.imagePreview.hidden = true;
+    els.imagePreview.src = "";
+  }
+}
+
+els.fields.image.addEventListener("input", updateImagePreview);
+
+els.fields.imageUpload.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const dataUrl = await compressImageFile(file);
+    els.fields.image.value = dataUrl;
+    updateImagePreview();
+  } catch {
+    alert("Couldn't read that image file. Try a different one.");
+  } finally {
+    e.target.value = "";
+  }
+});
+
 function openModal(comic) {
   els.form.reset();
   if (comic) {
@@ -189,6 +246,7 @@ function openModal(comic) {
     els.fields.id.value = "";
   }
   els.soldFields.hidden = !els.fields.sold.checked;
+  updateImagePreview();
   els.modalBackdrop.hidden = false;
   els.fields.title.focus();
 }
