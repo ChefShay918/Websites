@@ -3,14 +3,6 @@
     "accessibility": {
       "skip_to_content": "Skip to content"
     },
-    "search": {
-      "search": "Search"
-    },
-    "pagination": {
-      "label": "Pagination",
-      "previous": "Previous page",
-      "next": "Next page"
-    },
     "404": {
       "title": "Page Not Found",
       "body": "The page you were looking for doesn't exist.",
@@ -18,93 +10,117 @@
     }
   },
   "sections": {
-    "announcement_bar": {
-      "label": "Announcement"
-    },
     "header": {
       "navigation_label": "Main navigation",
-      "cart_label": "Cart ({{ count }} items)",
+      "cta_label": "Get a Quote",
       "nav": {
-        "shop": "Shop",
-        "collections": "Collections",
-        "about": "About",
+        "services": "Services",
+        "why_us": "Why Us",
+        "drivers": "Drivers",
         "contact": "Contact"
       }
     },
     "hero": {
       "label": "Hero banner",
-      "heading": "Wear Something That Means Something",
-      "subheading": "Every shirt printed by hand, made for you.",
-      "cta_label": "Shop Now"
+      "trust_same_day": "Same-day dispatch",
+      "trust_licensed": "Licensed & insured",
+      "trust_hipaa": "HIPAA-aware"
     },
-    "featured_products": {
-      "heading": "Shop Our Favs"
+    "stats": {
+      "label": "Company stats"
     },
-    "collections_grid": {
-      "heading": "Shop by Vibe"
+    "services": {
+      "label": "Our services"
     },
-    "about": {
-      "heading": "Made by Hand. Shipped with Love.",
-      "cta_label": "Learn More"
+    "medical_feature": {
+      "label": "Medical courier feature"
     },
-    "email_signup": {
-      "heading": "Stay in the Loop",
-      "subtext": "New designs, restocks, and deals — straight to your inbox.",
-      "email_label": "Email address",
-      "email_placeholder": "Your email address",
-      "button_label": "Subscribe"
+    "service_area": {
+      "label": "Service area"
+    },
+    "why_us": {
+      "label": "Why choose us"
+    },
+    "drivers": {
+      "label": "Driver hiring",
+      "badge": "Now Hiring",
+      "requirements_title": "Requirements",
+      "offers_title": "What We Offer",
+      "join_the_team": "Join the Team"
+    },
+    "quote": {
+      "label": "Request a quote",
+      "field_name": "Full Name*",
+      "field_company": "Company",
+      "field_email": "Email*",
+      "field_phone": "Phone*",
+      "field_service": "Service Needed",
+      "field_details": "Delivery Details",
+      "field_details_placeholder": "Pickup/drop-off, size, frequency, timing",
+      "service_box_truck": "Box Truck Delivery",
+      "service_medical": "Medical Courier",
+      "service_on_demand": "On-Demand Courier",
+      "service_recurring": "Recurring Route",
+      "service_other": "Other",
+      "submit_label": "Submit Request",
+      "success_message": "Thanks — your request has been sent. We'll follow up within one business day.",
+      "error_message": "Something went wrong. Please check the form and try again."
+    },
+    "apply": {
+      "hero_label": "Driver application hero",
+      "label": "Driver application form",
+      "requirements_title": "Requirements",
+      "questions_title": "Questions?",
+      "required_note": "All fields marked * are required.",
+      "section_contact": "Contact Info",
+      "section_license": "License & Experience",
+      "section_availability": "Availability",
+      "field_full_name": "Full Name*",
+      "field_email": "Email*",
+      "field_phone": "Phone*",
+      "field_city_zip": "City / ZIP",
+      "field_21": "Are you 21 or older?*",
+      "field_license_class": "License Class*",
+      "field_license_state": "License State",
+      "field_years_driving": "Years Driving Commercially",
+      "field_box_truck_experience": "Box Truck Experience — select all that apply",
+      "field_clean_record": "Clean Driving Record?*",
+      "field_background_check": "Willing to pass background & drug screen?*",
+      "field_availability": "Availability*",
+      "field_start_date": "Earliest Start Date",
+      "field_experience": "Previous Employer / Driving Experience",
+      "field_experience_placeholder": "Where have you driven? Routes, freight type, years...",
+      "field_other": "Anything else we should know?",
+      "field_other_placeholder": "Optional",
+      "option_yes": "Yes",
+      "option_no": "No",
+      "option_other": "Other",
+      "license_class_a": "Class A CDL",
+      "license_class_b": "Class B CDL",
+      "license_class_c": "Class C / Standard",
+      "years_none": "None yet",
+      "years_under_1": "Less than 1 year",
+      "years_1_3": "1-3 years",
+      "years_3_5": "3-5 years",
+      "years_5_plus": "5+ years",
+      "box_truck_16": "16 ft",
+      "box_truck_18": "18 ft",
+      "box_truck_22": "22 ft",
+      "box_truck_26": "26 ft",
+      "box_truck_cargo": "Cargo",
+      "box_truck_sprinter": "Sprinter",
+      "box_truck_none": "None",
+      "availability_full_time": "Full-time",
+      "availability_part_time": "Part-time",
+      "availability_weekends": "Weekends only",
+      "availability_on_call": "On-call / As needed",
+      "submit_label": "Submit Application",
+      "helper_text": "Submitting sends your application to our team. We reply within one business day.",
+      "success_message": "Thanks — your application has been sent. We'll follow up within one business day.",
+      "error_message": "Something went wrong. Please check the form and try again."
     },
     "footer": {
-      "tagline": "Tees made with heart, shipped with care.",
-      "quick_links": "Quick Links",
-      "link_shop": "Shop",
-      "link_collections": "Collections",
-      "link_contact": "Contact",
-      "link_faq": "FAQ",
-      "follow_us": "Follow Us",
-      "powered_by": "Powered by Shopify",
-      "payment_methods": "Payment methods"
-    },
-    "collection": {
-      "all_products": "All Products",
-      "product_count": "{{ count }} products",
-      "empty": "No products found."
+      "powered_by": "Powered by Shopify"
     }
-  },
-  "products": {
-    "product": {
-      "add_to_cart": "Add to Cart",
-      "sold_out": "Sold Out",
-      "unavailable": "Unavailable",
-      "choose_options": "Choose Options",
-      "instant_download": "Instant Download",
-      "sale": "Sale",
-      "whats_included_heading": "What's Included",
-      "whats_included_png": "High-res PNG (transparent background)",
-      "whats_included_svg": "Scalable SVG vector file",
-      "whats_included_pdf": "Print-ready PDF",
-      "whats_included_usage": "Personal & small commercial use license",
-      "digital_delivery_note": "Files delivered instantly via email after purchase."
-    }
-  },
-  "cart": {
-    "general": {
-      "title": "Your Cart",
-      "empty": "Your cart is empty.",
-      "continue_shopping": "Continue Shopping",
-      "checkout": "Check Out",
-      "remove": "Remove",
-      "update": "Update cart",
-      "order_summary": "Order Summary",
-      "subtotal": "Subtotal",
-      "total": "Total",
-      "taxes_and_shipping": "Taxes and shipping calculated at checkout",
-      "decrease_quantity": "Decrease quantity",
-      "increase_quantity": "Increase quantity",
-      "item_quantity": "Item quantity"
-    }
-  },
-  "onboarding": {
-    "product_title": "Sample Product"
   }
 }

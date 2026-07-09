@@ -1,0 +1,63 @@
+<section class="fbs-why-us section" id="why-us" aria-label="{{ 'sections.why_us.label' | t }}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    <div class="fbs-why-us__grid">
+      {%- for block in section.blocks -%}
+        <article class="fbs-why-us__card" {{ block.shopify_attributes }}>
+          <h3 class="fbs-why-us__card-title">{{ block.settings.title | escape }}</h3>
+          <p class="fbs-why-us__card-description">{{ block.settings.description }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Us",
+  "tag": "div",
+  "class": "why-us-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Choose Us"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "On-Time Guarantee"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We build in buffer time so your delivery arrives when we say it will."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Us",
+      "blocks": [
+        { "type": "reason", "settings": { "title": "On-Time Guarantee", "description": "We build in buffer time so your delivery arrives when we say it will." } },
+        { "type": "reason", "settings": { "title": "Fully Insured", "description": "Every run is covered, giving you peace of mind on every load." } },
+        { "type": "reason", "settings": { "title": "Family Owned", "description": "A local, family-run business that treats every customer like a neighbor." } },
+        { "type": "reason", "settings": { "title": "Local Knowledge", "description": "We know Tulsa's roads, routes, and neighborhoods inside and out." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

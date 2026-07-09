@@ -1,0 +1,52 @@
+<section class="fbs-stats section" aria-label="{{ 'sections.stats.label' | t }}">
+  <div class="container">
+    <ul class="fbs-stats__grid">
+      {%- for block in section.blocks -%}
+        <li class="fbs-stats__item" {{ block.shopify_attributes }}>
+          <span class="fbs-stats__number">{{ block.settings.number | escape }}</span>
+          <span class="fbs-stats__label">{{ block.settings.label | escape }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats bar",
+  "tag": "div",
+  "class": "stats-wrapper",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "16-26ft"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Fleet Size Range"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats bar",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "16-26ft", "label": "Fleet Size Range" } },
+        { "type": "stat", "settings": { "number": "24/7", "label": "Dispatch Availability" } },
+        { "type": "stat", "settings": { "number": "100%", "label": "Tulsa-Based" } },
+        { "type": "stat", "settings": { "number": "On-Time", "label": "Delivery Guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+<section class="fbs-service-area section" aria-label="{{ 'sections.service_area.label' | t }}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section__heading">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+
+    <ul class="fbs-service-area__grid">
+      {%- for block in section.blocks -%}
+        <li class="fbs-service-area__chip" {{ block.shopify_attributes }}>{{ block.settings.city | escape }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service Area",
+  "tag": "div",
+  "class": "service-area-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Where We Deliver"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "city",
+      "name": "City",
+      "settings": [
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City name",
+          "default": "Tulsa"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service Area",
+      "blocks": [
+        { "type": "city", "settings": { "city": "Tulsa" } },
+        { "type": "city", "settings": { "city": "Broken Arrow" } },
+        { "type": "city", "settings": { "city": "Owasso" } },
+        { "type": "city", "settings": { "city": "Bixby" } },
+        { "type": "city", "settings": { "city": "Jenks" } },
+        { "type": "city", "settings": { "city": "Sapulpa" } },
+        { "type": "city", "settings": { "city": "Sand Springs" } },
+        { "type": "city", "settings": { "city": "Claremore" } },
+        { "type": "city", "settings": { "city": "Muskogee" } },
+        { "type": "city", "settings": { "city": "Bartlesville" } },
+        { "type": "city", "settings": { "city": "Skiatook" } },
+        { "type": "city", "settings": { "city": "Okmulgee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

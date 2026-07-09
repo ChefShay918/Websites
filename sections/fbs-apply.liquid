@@ -1,0 +1,204 @@
+<section class="fbs-apply-hero" aria-label="{{ 'sections.apply.hero_label' | t }}">
+  <div class="container fbs-apply-hero__content">
+    <span class="fbs-apply-hero__badge">{{ section.settings.badge_text | escape }}</span>
+    <h1 class="fbs-apply-hero__heading">{{ section.settings.heading | escape }}</h1>
+    <p class="fbs-apply-hero__subheading">{{ section.settings.subheading }}</p>
+  </div>
+</section>
+
+<section class="fbs-apply section" aria-label="{{ 'sections.apply.label' | t }}">
+  <div class="container fbs-apply__inner">
+    <div class="fbs-apply__sidebar">
+      <div class="fbs-apply__box">
+        <h2 class="fbs-apply__box-title">{{ 'sections.apply.requirements_title' | t }}</h2>
+        <ul class="fbs-apply__list">
+          {%- assign requirements = section.settings.requirements | newline_to_br | split: '<br />' -%}
+          {%- for item in requirements -%}
+            {%- assign trimmed = item | strip -%}
+            {%- if trimmed != blank -%}
+              <li>{{ trimmed }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="fbs-apply__box">
+        <h2 class="fbs-apply__box-title">{{ 'sections.apply.questions_title' | t }}</h2>
+        <p>
+          <a class="fbs-apply__email" href="mailto:{{ section.settings.contact_email }}">
+            {{- section.settings.contact_email -}}
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="fbs-apply__form-wrap">
+      {%- form 'contact', class: 'fbs-apply__form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="fbs-quote__success">{{ 'sections.apply.success_message' | t }}</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="fbs-quote__error">{{ 'sections.apply.error_message' | t }}</p>
+        {%- endif -%}
+
+        <p class="fbs-apply__form-note">{{ 'sections.apply.required_note' | t }}</p>
+
+        <h3 class="fbs-apply__form-heading">{{ 'sections.apply.section_contact' | t }}</h3>
+        <div class="fbs-apply__grid">
+          <div class="fbs-quote__field">
+            <label for="ApplyFullName">{{ 'sections.apply.field_full_name' | t }}</label>
+            <input type="text" id="ApplyFullName" name="contact[name]" required>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyEmail">{{ 'sections.apply.field_email' | t }}</label>
+            <input type="email" id="ApplyEmail" name="contact[email]" spellcheck="false" autocapitalize="off" required>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyPhone">{{ 'sections.apply.field_phone' | t }}</label>
+            <input type="tel" id="ApplyPhone" name="contact[phone]" required>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyCityZip">{{ 'sections.apply.field_city_zip' | t }}</label>
+            <input type="text" id="ApplyCityZip" name="contact[City / ZIP]">
+          </div>
+        </div>
+
+        <h3 class="fbs-apply__form-heading">{{ 'sections.apply.section_license' | t }}</h3>
+        <div class="fbs-apply__grid">
+          <div class="fbs-quote__field">
+            <label for="Apply21">{{ 'sections.apply.field_21' | t }}</label>
+            <select id="Apply21" name="contact[Are you 21 or older?]" required>
+              <option value="Yes">{{ 'sections.apply.option_yes' | t }}</option>
+              <option value="No">{{ 'sections.apply.option_no' | t }}</option>
+            </select>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyLicenseClass">{{ 'sections.apply.field_license_class' | t }}</label>
+            <select id="ApplyLicenseClass" name="contact[License Class]" required>
+              <option value="Class A CDL">{{ 'sections.apply.license_class_a' | t }}</option>
+              <option value="Class B CDL">{{ 'sections.apply.license_class_b' | t }}</option>
+              <option value="Class C / Standard">{{ 'sections.apply.license_class_c' | t }}</option>
+              <option value="Other">{{ 'sections.apply.option_other' | t }}</option>
+            </select>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyLicenseState">{{ 'sections.apply.field_license_state' | t }}</label>
+            <input type="text" id="ApplyLicenseState" name="contact[License State]">
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyYearsDriving">{{ 'sections.apply.field_years_driving' | t }}</label>
+            <select id="ApplyYearsDriving" name="contact[Years Driving Commercially]">
+              <option value="None yet">{{ 'sections.apply.years_none' | t }}</option>
+              <option value="Less than 1 year">{{ 'sections.apply.years_under_1' | t }}</option>
+              <option value="1-3 years">{{ 'sections.apply.years_1_3' | t }}</option>
+              <option value="3-5 years">{{ 'sections.apply.years_3_5' | t }}</option>
+              <option value="5+ years">{{ 'sections.apply.years_5_plus' | t }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label>{{ 'sections.apply.field_box_truck_experience' | t }}</label>
+          <div class="fbs-apply__checkbox-grid">
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - 16ft]" value="Yes"> {{ 'sections.apply.box_truck_16' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - 18ft]" value="Yes"> {{ 'sections.apply.box_truck_18' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - 22ft]" value="Yes"> {{ 'sections.apply.box_truck_22' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - 26ft]" value="Yes"> {{ 'sections.apply.box_truck_26' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - Cargo Van]" value="Yes"> {{ 'sections.apply.box_truck_cargo' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - Sprinter Van]" value="Yes"> {{ 'sections.apply.box_truck_sprinter' | t }}</label>
+            <label class="fbs-apply__checkbox"><input type="checkbox" name="contact[Box Truck Experience - None]" value="Yes"> {{ 'sections.apply.box_truck_none' | t }}</label>
+          </div>
+        </div>
+
+        <div class="fbs-apply__grid">
+          <div class="fbs-quote__field">
+            <label for="ApplyCleanRecord">{{ 'sections.apply.field_clean_record' | t }}</label>
+            <select id="ApplyCleanRecord" name="contact[Clean Driving Record?]" required>
+              <option value="Yes">{{ 'sections.apply.option_yes' | t }}</option>
+              <option value="No">{{ 'sections.apply.option_no' | t }}</option>
+            </select>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyBackgroundCheck">{{ 'sections.apply.field_background_check' | t }}</label>
+            <select id="ApplyBackgroundCheck" name="contact[Willing to pass background & drug screen?]" required>
+              <option value="Yes">{{ 'sections.apply.option_yes' | t }}</option>
+              <option value="No">{{ 'sections.apply.option_no' | t }}</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="fbs-apply__form-heading">{{ 'sections.apply.section_availability' | t }}</h3>
+        <div class="fbs-apply__grid">
+          <div class="fbs-quote__field">
+            <label for="ApplyAvailability">{{ 'sections.apply.field_availability' | t }}</label>
+            <select id="ApplyAvailability" name="contact[Availability]" required>
+              <option value="Full-time">{{ 'sections.apply.availability_full_time' | t }}</option>
+              <option value="Part-time">{{ 'sections.apply.availability_part_time' | t }}</option>
+              <option value="Weekends only">{{ 'sections.apply.availability_weekends' | t }}</option>
+              <option value="On-call / As needed">{{ 'sections.apply.availability_on_call' | t }}</option>
+            </select>
+          </div>
+          <div class="fbs-quote__field">
+            <label for="ApplyStartDate">{{ 'sections.apply.field_start_date' | t }}</label>
+            <input type="date" id="ApplyStartDate" name="contact[Earliest Start Date]">
+          </div>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ApplyExperience">{{ 'sections.apply.field_experience' | t }}</label>
+          <textarea id="ApplyExperience" name="contact[Previous Employer / Driving Experience]" rows="4" placeholder="{{ 'sections.apply.field_experience_placeholder' | t }}"></textarea>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ApplyBody">{{ 'sections.apply.field_other' | t }}</label>
+          <textarea id="ApplyBody" name="contact[body]" rows="3" placeholder="{{ 'sections.apply.field_other_placeholder' | t }}"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary fbs-quote__submit">
+          {{- 'sections.apply.submit_label' | t -}}
+        </button>
+        <p class="fbs-apply__helper-text">{{ 'sections.apply.helper_text' | t }}</p>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Driver Application",
+  "tag": "div",
+  "class": "apply-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "NOW HIRING — TULSA"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Medical Courier & Driver Application"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We're hiring medical courier drivers first, with box truck, sprinter, and cargo van roles also available. Our team follows up within one business day."
+    },
+    {
+      "type": "textarea",
+      "id": "requirements",
+      "label": "Requirements (one per line)",
+      "default": "21+ with valid driver's license\nClean driving record\nPass background & drug screen\nSmartphone with data\nBusiness casual attire"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "familybondsolutionsllc@gmail.com"
+    }
+  ]
+}
+{% endschema %}

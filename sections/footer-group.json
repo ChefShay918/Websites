@@ -3,8 +3,10 @@
   "name": "Footer",
   "sections": {
     "footer": {
-      "type": "pbs-footer",
-      "settings": {}
+      "type": "fbs-footer",
+      "settings": {
+        "contact_email": "familybondsolutionsllc@gmail.com"
+      }
     }
   },
   "order": ["footer"]

@@ -1,0 +1,114 @@
+<section class="fbs-drivers section" id="drivers" aria-label="{{ 'sections.drivers.label' | t }}">
+  <div class="container fbs-drivers__inner">
+    <div class="fbs-drivers__content">
+      <span class="fbs-drivers__badge">{{ 'sections.drivers.badge' | t }}</span>
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="fbs-drivers__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="fbs-drivers__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <div class="fbs-drivers__columns">
+        <div class="fbs-drivers__column">
+          <h3 class="fbs-drivers__column-title">{{ 'sections.drivers.requirements_title' | t }}</h3>
+          <ul class="fbs-drivers__list">
+            {%- assign requirements = section.settings.requirements | newline_to_br | split: '<br />' -%}
+            {%- for item in requirements -%}
+              {%- assign trimmed = item | strip -%}
+              {%- if trimmed != blank -%}
+                <li>{{ trimmed }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+
+        <div class="fbs-drivers__column">
+          <h3 class="fbs-drivers__column-title">{{ 'sections.drivers.offers_title' | t }}</h3>
+          <ul class="fbs-drivers__list">
+            {%- assign offers = section.settings.offers | newline_to_br | split: '<br />' -%}
+            {%- for item in offers -%}
+              {%- assign trimmed = item | strip -%}
+              {%- if trimmed != blank -%}
+                <li>{{ trimmed }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+
+      <a class="btn btn--primary" href="{{ section.settings.cta_url | default: '/pages/apply' }}">
+        {{- section.settings.cta_label | escape -}}
+      </a>
+    </div>
+
+    <div class="fbs-drivers__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 900 | image_tag:
+          loading: 'lazy',
+          alt: section.settings.image.alt | default: section.settings.heading,
+          widths: '400, 600, 900',
+          sizes: '(min-width: 768px) 40vw, 100vw'
+        }}
+      {%- endif -%}
+      <span class="fbs-drivers__callout">{{ 'sections.drivers.join_the_team' | t }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Drivers",
+  "tag": "div",
+  "class": "drivers-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Drive Medical Courier Routes With People Who Treat You Like Family"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We're hiring medical courier drivers first, with box truck, sprinter, and cargo van roles also available."
+    },
+    {
+      "type": "textarea",
+      "id": "requirements",
+      "label": "Requirements (one per line)",
+      "default": "21+ with valid driver's license\nClean driving record\nPass background & drug screen\nSmartphone with data\nBusiness casual attire"
+    },
+    {
+      "type": "textarea",
+      "id": "offers",
+      "label": "What we offer (one per line)",
+      "default": "Consistent, local routes\nFamily-owned culture\nWeekly pay\nRoom to grow"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Driver photo"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Apply Online"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drivers",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

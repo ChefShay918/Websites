@@ -1,0 +1,101 @@
+<section class="fbs-quote section" id="quote" aria-label="{{ 'sections.quote.label' | t }}">
+  <div class="container fbs-quote__inner">
+    <div class="fbs-quote__info">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="fbs-quote__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="fbs-quote__body">{{ section.settings.body }}</p>
+      {%- endif -%}
+
+      <a class="fbs-quote__email" href="mailto:{{ section.settings.contact_email }}">
+        {{- section.settings.contact_email -}}
+      </a>
+    </div>
+
+    <div class="fbs-quote__form-wrap">
+      {%- form 'contact', class: 'fbs-quote__form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="fbs-quote__success">{{ 'sections.quote.success_message' | t }}</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="fbs-quote__error">{{ 'sections.quote.error_message' | t }}</p>
+        {%- endif -%}
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormName">{{ 'sections.quote.field_name' | t }}</label>
+          <input type="text" id="ContactFormName" name="contact[name]" required>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormCompany">{{ 'sections.quote.field_company' | t }}</label>
+          <input type="text" id="ContactFormCompany" name="contact[Company]">
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormEmail">{{ 'sections.quote.field_email' | t }}</label>
+          <input type="email" id="ContactFormEmail" name="contact[email]" spellcheck="false" autocapitalize="off" required>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormPhone">{{ 'sections.quote.field_phone' | t }}</label>
+          <input type="tel" id="ContactFormPhone" name="contact[phone]" required>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormService">{{ 'sections.quote.field_service' | t }}</label>
+          <select id="ContactFormService" name="contact[Service Needed]">
+            <option value="Box Truck Delivery">{{ 'sections.quote.service_box_truck' | t }}</option>
+            <option value="Medical Courier">{{ 'sections.quote.service_medical' | t }}</option>
+            <option value="On-Demand Courier">{{ 'sections.quote.service_on_demand' | t }}</option>
+            <option value="Recurring Route">{{ 'sections.quote.service_recurring' | t }}</option>
+            <option value="Other">{{ 'sections.quote.service_other' | t }}</option>
+          </select>
+        </div>
+
+        <div class="fbs-quote__field">
+          <label for="ContactFormBody">{{ 'sections.quote.field_details' | t }}</label>
+          <textarea id="ContactFormBody" name="contact[body]" rows="4" placeholder="{{ 'sections.quote.field_details_placeholder' | t }}"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary fbs-quote__submit">
+          {{- 'sections.quote.submit_label' | t -}}
+        </button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quote Request",
+  "tag": "div",
+  "class": "quote-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Request a Delivery Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Tell us about your delivery and we'll follow up within one business day."
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "familybondsolutionsllc@gmail.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Request",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container site-footer__inner">
+    <a class="site-footer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <img
+        src="{{ 'fbs-logo.jpeg' | asset_url }}"
+        alt="{{ shop.name }}"
+        width="120"
+        height="auto"
+        loading="lazy"
+      >
+    </a>
+
+    <a class="site-footer__email" href="mailto:{{ section.settings.contact_email }}">
+      {{- section.settings.contact_email -}}
+    </a>
+
+    <p class="site-footer__copyright">
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &middot; {{ 'sections.footer.powered_by' | t }}
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "div",
+  "class": "footer-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "familybondsolutionsllc@gmail.com"
+    }
+  ]
+}
+{% endschema %}
