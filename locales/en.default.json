@@ -58,7 +58,7 @@
       "field_service": "Service Needed",
       "field_details": "Delivery Details",
       "field_details_placeholder": "Pickup/drop-off, size, frequency, timing",
-      "service_box_truck": "Box Truck Delivery",
+      "service_box_truck": "Box Truck & Van Delivery",
       "service_medical": "Medical Courier",
       "service_on_demand": "On-Demand Courier",
       "service_recurring": "Recurring Route",

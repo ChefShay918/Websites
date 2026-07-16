@@ -7,9 +7,9 @@
           "type": "service",
           "settings": {
             "icon": "box-truck",
-            "title": "Box Truck Delivery",
-            "description": "Last-mile and recurring routes, plus pallet and LTL freight.",
-            "checklist": "Last-mile delivery\nRecurring routes\nPallet & LTL freight"
+            "title": "Box Truck & Van Delivery",
+            "description": "Last-mile and recurring routes using box trucks, cargo vans, or sprinters sized to the job, plus pallet and LTL freight.",
+            "checklist": "Last-mile delivery\nRecurring routes\nBox truck, van & sprinter fleet"
           }
         },
         "service-medical": {
