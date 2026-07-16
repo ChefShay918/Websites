@@ -9,7 +9,7 @@
         "primary_cta_label": "Request a Delivery Quote",
         "primary_cta_url": "/pages/contact",
         "secondary_cta_label": "Drive With Us",
-        "secondary_cta_url": "/pages/apply",
+        "secondary_cta_url": "/pages/apply-or-driver-application",
         "overlay_opacity": 40
       }
     },
