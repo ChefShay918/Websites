@@ -1,0 +1,64 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container site-footer__inner">
+    <a class="site-footer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <img
+        src="{{ 'fbs-logo-reversed.png' | asset_url }}"
+        alt="{{ shop.name }}"
+        width="120"
+        height="auto"
+        loading="lazy"
+      >
+    </a>
+
+    <a class="site-footer__email" href="mailto:{{ section.settings.contact_email }}">
+      {{- section.settings.contact_email -}}
+    </a>
+
+    {%- if section.settings.instagram_url != blank -%}
+      <a class="site-footer__social-icon" href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    {%- endif -%}
+
+    {%- if shop.privacy_policy or shop.terms_of_service -%}
+      <ul class="site-footer__legal-links">
+        {%- if shop.privacy_policy -%}
+          <li><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>
+        {%- endif -%}
+        {%- if shop.terms_of_service -%}
+          <li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+
+    <p class="site-footer__copyright">
+      &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &middot; {{ 'sections.footer.powered_by' | t }}
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "div",
+  "class": "footer-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "familybondsolutionsllc@gmail.com"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    }
+  ]
+}
+{% endschema %}

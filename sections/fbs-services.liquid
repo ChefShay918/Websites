@@ -1,0 +1,136 @@
+<section class="fbs-services section" id="services" aria-label="{{ 'sections.services.label' | t }}">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="section__heading">{{ section.settings.heading | escape }}</h1>
+    {%- endif -%}
+
+    <div class="fbs-services__grid">
+      {%- for block in section.blocks -%}
+        <article
+          class="fbs-service-card{% if block.settings.highlighted %} fbs-service-card--highlighted{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <span class="fbs-service-card__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'medical' -%}
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20"/></svg>
+              {%- when 'on-demand' -%}
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              {%- else -%}
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            {%- endcase -%}
+          </span>
+
+          <h3 class="fbs-service-card__title">{{ block.settings.title | escape }}</h3>
+          <p class="fbs-service-card__description">{{ block.settings.description }}</p>
+
+          {%- if block.settings.checklist != blank -%}
+            <ul class="fbs-service-card__checklist">
+              {%- assign items = block.settings.checklist | newline_to_br | split: '<br />' -%}
+              {%- for item in items -%}
+                {%- assign trimmed = item | strip -%}
+                {%- if trimmed != blank -%}
+                  <li>{{ trimmed }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services",
+  "tag": "div",
+  "class": "services-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Services"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "box-truck", "label": "Box truck" },
+            { "value": "medical", "label": "Medical" },
+            { "value": "on-demand", "label": "On-demand" }
+          ],
+          "default": "box-truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Box Truck Delivery"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Last-mile and recurring routes, plus pallet and LTL freight."
+        },
+        {
+          "type": "textarea",
+          "id": "checklist",
+          "label": "Checklist (one item per line)",
+          "default": "Last-mile delivery\nRecurring routes\nPallet & LTL freight"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlighted",
+          "label": "Highlight this card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "icon": "box-truck",
+            "title": "Box Truck & Van Delivery",
+            "description": "Last-mile and recurring routes using box trucks, cargo vans, or sprinters sized to the job, plus pallet and LTL freight.",
+            "checklist": "Last-mile delivery\nRecurring routes\nBox truck, van & sprinter fleet"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "medical",
+            "title": "Medical Courier",
+            "description": "Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody.",
+            "checklist": "Lab specimen transport\nPharmacy runs\nHIPAA-aware handling",
+            "highlighted": true
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "on-demand",
+            "title": "On-Demand Courier",
+            "description": "Same-day pickup and delivery for documents and parts via sprinter or cargo van.",
+            "checklist": "Same-day pickup/delivery\nDocuments & parts\nSprinter & cargo van"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

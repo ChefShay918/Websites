@@ -1,58 +1,41 @@
 {
   "sections": {
-    "pbs-hero": {
-      "type": "pbs-hero",
+    "fbs-hero": {
+      "type": "fbs-hero",
       "settings": {
-        "heading": "Wear Something That Means Something",
-        "subheading": "Every shirt printed by hand, made for you.",
-        "cta_label": "Shop Now",
+        "location_label": "Tulsa, Oklahoma",
+        "heading": "Tulsa's trusted box truck, van & medical courier service",
+        "subheading": "Same-day box truck, van & sprinter delivery, plus HIPAA-aware medical courier runs, across the Tulsa metro.",
+        "primary_cta_label": "Request a Delivery Quote",
+        "primary_cta_url": "/pages/contact",
+        "secondary_cta_label": "Drive With Us",
+        "secondary_cta_url": "/pages/apply-or-driver-application",
         "overlay_opacity": 40
       }
     },
-    "pbs-featured-products": {
-      "type": "pbs-featured-products",
-      "settings": {
-        "heading": "Shop Our Favs",
-        "products_to_show": 4
-      }
-    },
-    "pbs-collections-grid": {
-      "type": "pbs-collections-grid",
+    "fbs-stats": {
+      "type": "fbs-stats",
       "blocks": {
-        "col-sports": { "type": "collection", "settings": { "label": "Sports" } },
-        "col-humor": { "type": "collection", "settings": { "label": "Humor" } },
-        "col-mama": { "type": "collection", "settings": { "label": "Mama" } },
-        "col-seasonal": { "type": "collection", "settings": { "label": "Seasonal" } },
-        "col-kiddos": { "type": "collection", "settings": { "label": "Kiddos" } },
-        "col-new": { "type": "collection", "settings": { "label": "New Releases" } }
+        "stat-fleet": { "type": "stat", "settings": { "number": "16-26ft", "label": "Fleet Size Range" } },
+        "stat-dispatch": { "type": "stat", "settings": { "number": "24/7", "label": "Dispatch Availability" } },
+        "stat-tulsa": { "type": "stat", "settings": { "number": "100%", "label": "Tulsa-Based" } },
+        "stat-ontime": { "type": "stat", "settings": { "number": "On-Time", "label": "Delivery Guarantee" } }
       },
-      "block_order": ["col-sports", "col-humor", "col-mama", "col-seasonal", "col-kiddos", "col-new"],
-      "settings": {
-        "heading": "Shop by Vibe"
-      }
+      "block_order": ["stat-fleet", "stat-dispatch", "stat-tulsa", "stat-ontime"]
     },
-    "pbs-about": {
-      "type": "pbs-about",
+    "fbs-quote": {
+      "type": "fbs-quote",
       "settings": {
-        "heading": "Made by Hand. Shipped with Love.",
-        "body": "<p>We're a small print shop where every design starts with an idea and ends with a shirt you'll actually want to wear. No factories, no middlemen — just us, some ink, and a whole lot of love.</p><p>Founded by Shay, PrintsByShay is built on the belief that what you wear should mean something.</p>",
-        "cta_label": "Learn More",
-        "cta_url": "/pages/about"
-      }
-    },
-    "pbs-email-signup": {
-      "type": "pbs-email-signup",
-      "settings": {
-        "heading": "Stay in the Loop",
-        "subtext": "New designs, restocks, and deals — straight to your inbox."
+        "heading": "Request a Delivery Quote",
+        "body": "Tell us about your delivery and we'll follow up within one business day.",
+        "contact_email": "familybondsolutionsllc@gmail.com",
+        "jotform_id": "261967084325060"
       }
     }
   },
   "order": [
-    "pbs-hero",
-    "pbs-featured-products",
-    "pbs-collections-grid",
-    "pbs-about",
-    "pbs-email-signup"
+    "fbs-hero",
+    "fbs-stats",
+    "fbs-quote"
   ]
 }

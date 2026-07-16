@@ -1,0 +1,78 @@
+<section class="fbs-medical-feature section" aria-label="{{ 'sections.medical_feature.label' | t }}">
+  <div class="container fbs-medical-feature__inner">
+    <div class="fbs-medical-feature__image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag:
+          loading: 'lazy',
+          alt: section.settings.image.alt | default: section.settings.heading,
+          widths: '400, 700, 1000, 1200',
+          sizes: '(min-width: 768px) 50vw, 100vw'
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'fbs-medical-photo.jpg' | asset_url }}"
+          loading="lazy"
+          alt="{{ section.settings.heading }}"
+        >
+      {%- endif -%}
+    </div>
+
+    <div class="fbs-medical-feature__content">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="fbs-medical-feature__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="fbs-medical-feature__body rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+      {%- if section.settings.cta_label != blank -%}
+        <a class="btn btn--primary" href="{{ section.settings.cta_url | default: '/pages/contact' }}">
+          {{- section.settings.cta_label | escape -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Medical Courier Feature",
+  "tag": "div",
+  "class": "medical-feature-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Medical Courier You Can Trust"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody. Our drivers are trained for HIPAA-aware pickups and deliveries across the Tulsa metro.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Request Medical Service"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Medical Courier Feature",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

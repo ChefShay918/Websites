@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "fbs-services": {
+      "type": "fbs-services",
+      "blocks": {
+        "service-box-truck": {
+          "type": "service",
+          "settings": {
+            "icon": "box-truck",
+            "title": "Box Truck & Van Delivery",
+            "description": "Last-mile and recurring routes using box trucks, cargo vans, or sprinters sized to the job, plus pallet and LTL freight.",
+            "checklist": "Last-mile delivery\nRecurring routes\nBox truck, van & sprinter fleet"
+          }
+        },
+        "service-medical": {
+          "type": "service",
+          "settings": {
+            "icon": "medical",
+            "title": "Medical Courier",
+            "description": "Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody.",
+            "checklist": "Lab specimen transport\nPharmacy runs\nHIPAA-aware handling",
+            "highlighted": true
+          }
+        },
+        "service-on-demand": {
+          "type": "service",
+          "settings": {
+            "icon": "on-demand",
+            "title": "On-Demand Courier",
+            "description": "Same-day pickup and delivery for documents and parts via sprinter or cargo van.",
+            "checklist": "Same-day pickup/delivery\nDocuments & parts\nSprinter & cargo van"
+          }
+        }
+      },
+      "block_order": ["service-box-truck", "service-medical", "service-on-demand"],
+      "settings": {
+        "heading": "Our Services"
+      }
+    },
+    "fbs-medical-feature": {
+      "type": "fbs-medical-feature",
+      "settings": {
+        "heading": "Medical Courier You Can Trust",
+        "body": "<p>Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody. Our drivers are trained for HIPAA-aware pickups and deliveries across the Tulsa metro.</p>",
+        "cta_label": "Request Medical Service"
+      }
+    },
+    "fbs-service-area": {
+      "type": "fbs-service-area",
+      "blocks": {
+        "city-tulsa": { "type": "city", "settings": { "city": "Tulsa" } },
+        "city-broken-arrow": { "type": "city", "settings": { "city": "Broken Arrow" } },
+        "city-owasso": { "type": "city", "settings": { "city": "Owasso" } },
+        "city-bixby": { "type": "city", "settings": { "city": "Bixby" } },
+        "city-jenks": { "type": "city", "settings": { "city": "Jenks" } },
+        "city-sapulpa": { "type": "city", "settings": { "city": "Sapulpa" } },
+        "city-sand-springs": { "type": "city", "settings": { "city": "Sand Springs" } },
+        "city-claremore": { "type": "city", "settings": { "city": "Claremore" } },
+        "city-muskogee": { "type": "city", "settings": { "city": "Muskogee" } },
+        "city-bartlesville": { "type": "city", "settings": { "city": "Bartlesville" } },
+        "city-skiatook": { "type": "city", "settings": { "city": "Skiatook" } },
+        "city-okmulgee": { "type": "city", "settings": { "city": "Okmulgee" } }
+      },
+      "block_order": [
+        "city-tulsa", "city-broken-arrow", "city-owasso", "city-bixby", "city-jenks",
+        "city-sapulpa", "city-sand-springs", "city-claremore", "city-muskogee",
+        "city-bartlesville", "city-skiatook", "city-okmulgee"
+      ],
+      "settings": {
+        "heading": "Tulsa & the Surrounding Metro"
+      }
+    }
+  },
+  "order": ["fbs-services", "fbs-medical-feature", "fbs-service-area"]
+}

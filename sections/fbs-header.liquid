@@ -1,0 +1,63 @@
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+
+    <a class="site-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <img
+        src="{{ 'fbs-logo-reversed.png' | asset_url }}"
+        alt="{{ shop.name }}"
+        width="{{ section.settings.logo_width }}"
+        height="auto"
+        loading="eager"
+      >
+    </a>
+
+    <nav class="site-nav" id="fbs-site-nav" aria-label="{{ 'sections.header.navigation_label' | t }}">
+      <a class="site-nav__link" href="{{ routes.root_url }}pages/services">{{ 'sections.header.nav.services' | t }}</a>
+      <a class="site-nav__link" href="{{ routes.root_url }}pages/why-us">{{ 'sections.header.nav.why_us' | t }}</a>
+      <a class="site-nav__link" href="{{ routes.root_url }}pages/drivers">{{ 'sections.header.nav.drivers' | t }}</a>
+      <a class="site-nav__link" href="{{ routes.root_url }}pages/contact">{{ 'sections.header.nav.contact' | t }}</a>
+      <a class="btn btn--primary site-nav__cta-mobile" href="{{ routes.root_url }}pages/contact">
+        {{- 'sections.header.cta_label' | t -}}
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      class="site-header__menu-toggle"
+      aria-expanded="false"
+      aria-controls="fbs-site-nav"
+      aria-label="{{ 'sections.header.menu_label' | t }}"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+    <a class="btn btn--primary site-header__cta" href="{{ routes.root_url }}pages/contact">
+      {{- 'sections.header.cta_label' | t -}}
+    </a>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "div",
+  "class": "header-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width (px)",
+      "min": 80,
+      "max": 240,
+      "step": 10,
+      "default": 140
+    }
+  ]
+}
+{% endschema %}

@@ -1,208 +1,141 @@
-# PrintsByShay — Shopify Theme Brief
+# Family Bond Solutions LLC — Shopify Theme Brief
 
-## Project Overview
+## Business Overview
+Family Bond Solutions LLC is a family-owned courier and delivery business based in Tulsa, OK. This is a **lead-generation marketing site**, not e-commerce — no cart, no products. The goal is quote requests and driver applications, same model as Tricia's Treats (native Shopify contact form, no checkout).
 
-**Store name:** PrintsByShay  
-**Platform:** Shopify Online Store 2.0  
-**Type:** Portfolio build (not a live client store)  
-**Product:** Graphic tees — handmade, printed in-house  
-**Audience:** General / everyone  
-**Vibe:** Warm, handmade, earthy, personal — like a small shop you stumbled upon and immediately trusted
+**Fleet:** sprinter van, moving van(s), box truck(s) (16–26ft range)
+**Core services:**
+1. Box Truck Delivery — last-mile, recurring routes, pallet/LTL freight
+2. Medical Courier — lab specimens, pharmacy runs, confidential records, chain-of-custody, HIPAA-aware
+3. On-Demand Courier — same-day pickup/delivery, documents/parts, sprinter & cargo van
+
+**Service area:** Tulsa, Broken Arrow, Owasso, Bixby, Jenks, Sapulpa, Sand Springs, Claremore, Muskogee, Bartlesville, Skiatook, Okmulgee
+
+**Contact info (for now — email only):**
+- Email: familybondsolutionsllc@gmail.com
+- Phone and HQ address: not in use yet — omit from the site entirely (no tel: links, no address block) until Shay provides them
+
+**Reference source:** Lovable-exported page at `fresh-start-strips.lovable.app` — full HTML/copy captured, this brief translates it to OS 2.0.
 
 ---
 
 ## Brand Tokens
 
-### Color Palette
+| Token | Value | Notes |
+|---|---|---|
+| Primary (brand red) | `#961D14` | Sampled from logo; brick/maroon, not bright red |
+| Black | `#000000` | Header, footer, hero, drivers section backgrounds |
+| Secondary (dark text/panel) | `#1A1A1A`–`#222222` range | Used for dark panel sections (e.g. medical courier feature) — confirm exact shade in dev store |
+| Background (light) | `#FFFFFF` | Content sections |
+| Muted background | `#F4F4F5`-ish light gray | Stats bar, subtle section dividers |
+| Foreground text | near-black | Body copy on light sections |
+| Accent (icon chips) | light gray/off-white | Icon badge backgrounds on light sections |
 
-| Token | Hex | Use |
-|-------|-----|-----|
-| `--color-background` | `#F5F0E8` | Page background (warm cream) |
-| `--color-accent` | `#C4622D` | Primary CTA, highlights (terracotta) |
-| `--color-text` | `#2C2416` | Body text (warm charcoal) |
-| `--color-secondary` | `#8A9E7B` | Secondary accents (dusty sage) |
-| `--color-sand` | `#D4B896` | Borders, subtle backgrounds (sand) |
-| `--color-white` | `#FFFFFF` | Cards, overlays |
+**Typography:** Bolder, more industrial display font for headings — use **Archivo Black** (or Anton-adjacent alternative; avoid reusing Anton since Tattoo Money Supplies already uses it) paired with **Inter** for body copy. Apply the heavy weight to all H1–H3 headings currently rendered as `font-black` in the Lovable source; keep body text in Inter for readability.
 
-### Typography
-
-| Role | Font | Weight |
-|------|------|--------|
-| Display / Headlines | Playfair Display | 700 |
-| Subheadings | Lora | 600 |
-| Body | DM Sans | 400, 500 |
-| Labels / Caps | DM Sans | 500, uppercase |
-
-Load via Google Fonts:
-```
-https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@600&family=DM+Sans:wght@400;500&display=swap
-```
-
----
-
-## Products
-
-- **Type:** Graphic tees
-- **Variants:** Size (S, M, L, XL, 2XL, 3XL) + Color (text input or dropdown — standard Shopify variant, no custom upload)
-- **Price point:** ~$28–$35
-- **No custom order flow** — customers pick from existing designs and select variants
+**Section naming convention:** `fbs-` prefix (e.g. `fbs-hero`, `fbs-services`).
 
 ---
 
 ## Homepage Sections (in order)
 
-### 1. Announcement Bar (`pbs-announcement-bar`)
-- Text: "Handmade with love · Free shipping on orders over $50"
-- Background: `--color-accent` (terracotta)
-- Text: white
-- Schema setting: `announcement_text` (text)
+1. **Header** — logo (`fbs-logo.jpeg`, provided), nav (Services / Why Us / Drivers / Contact), "Get a Quote" CTA button. Sticky, black/90 backdrop blur.
+2. **fbs-hero** — black bg, hero truck image (40% opacity overlay), "Tulsa, Oklahoma" location pill, H1 "Tulsa's trusted box truck & medical courier," subhead, two CTAs ("Request a Delivery Quote", "Drive With Us"), trust row (Same-day dispatch / Licensed & insured / HIPAA-aware).
+3. **fbs-stats** — 4-stat bar: fleet size range, 24/7 dispatch, 100% Tulsa-based, On-time guarantee.
+4. **fbs-services** — 3-card grid: Box Truck Delivery, Medical Courier (highlighted/inverted card), On-Demand Courier. Each card: icon, title, description, 3-item checklist.
+5. **fbs-medical-feature** — dark panel, image + copy split. Chain-of-custody/HIPAA detail, "Request Medical Service" CTA.
+6. **fbs-service-area** — light/accent bg, city chip grid (12 cities listed above).
+7. **fbs-why-us** — 4-card grid: On-Time Guarantee, Fully Insured, Family Owned, Local Knowledge.
+8. **fbs-drivers** — black bg, "Now Hiring" badge, requirements list + offers list (two columns), "Apply Online" + "Call" CTAs, driver photo with "Join the Team" callout badge.
 
-### 2. Header (`pbs-header`)
-- Logo: SVG file — `assets/logo-light.svg` (use on cream/light backgrounds)
-- Render via `<img>` tag pointing to `'logo-light.svg' | asset_url` — do NOT use `image_tag` filter (SVGs don't go through Shopify CDN image transforms)
-- Schema settings: `logo_width` (range 100–300, default 180) for sizing
-- Nav links: Shop, Collections, About, Contact
-- Icons: Search, Cart
-- Sticky on scroll
-- Background: `--color-background`
+   **⚠️ Hiring focus correction (per Shay):** Driver hiring is not box-truck-only — the primary need is **medical courier drivers**, with box truck / general courier as additional roles, not the headline. Rewrite the "Drive a box truck with people who treat you like family" headline and supporting copy (both the homepage teaser and the `/apply` page hero) to lead with medical courier driving, and mention box truck / sprinter / cargo van roles as also available. Don't drop the box truck requirements/experience fields — just reorder emphasis so medical courier reads as the main ask.
+9. **fbs-quote** — split layout: contact info (email only for now — mailto link) + quote request form.
+10. **Footer** — logo, copyright, email link only.
 
-### 3. Hero (`pbs-hero`)
-- Full-width banner
-- Headline: "Wear Something That Means Something"
-- Subtext: "Every shirt printed by hand, made for you."
-- CTA button: "Shop Now" → `/collections/all`
-- Background: image with warm overlay, fallback to `--color-sand`
-- Schema settings: `heading`, `subheading`, `cta_label`, `cta_url`, `image`, `overlay_opacity`
+## Driver Application Page (`/apply`)
+Separate page from the homepage — needs its own template (e.g. `templates/page.apply.json` with a dedicated `fbs-apply` section, or `templates/page.driver-application.json`).
 
-### 4. Featured Products (`pbs-featured-products`)
-- Section heading: "Shop Our Favs"
-- Product carousel / grid (4–6 products)
-- Each card: product image, title, price, "Choose Options" button
-- Schema settings: `heading`, `collection` (collection picker), `products_to_show` (range 2–12)
+**Hero:** "NOW HIRING — TULSA" badge (red), H1 "Driver Application" *(reframe per the hiring-focus correction above — consider "Medical Courier & Driver Application" or similar)*, subhead: tells applicant the team follows up within one business day. Drop the "prefer to call" line for now since no phone number is live.
 
-### 5. Collections Grid (`pbs-collections-grid`)
-- Section heading: "Shop by Vibe"
-- Grid of collection tiles with image + title overlay
-- Suggested collections: Sports, Humor, Mama, Seasonal, Kiddos, New Releases, Best Sellers
-- Schema settings: `heading`, blocks of type `collection` (collection picker + label)
+**Requirements box:** 21+ with valid driver's license, Clean driving record, Pass background & drug screen, Smartphone with data, Business casual attire.
 
-### 6. About Blurb (`pbs-about`)
-- Heading: "Made by Hand. Shipped with Love."
-- Body: 2–3 sentences about the brand — personal, warm tone
-- Optional image (photo of shirts, workspace, etc.)
-- CTA: "Learn More" → `/pages/about` (optional)
-- Layout: text left, image right (or stacked on mobile)
-- Schema settings: `heading`, `body` (richtext), `image`, `cta_label`, `cta_url`
+**Questions box:** Email only (familybondsolutionsllc@gmail.com).
 
-### 7. Email Signup (`pbs-email-signup`)
-- Heading: "Stay in the Loop"
-- Subtext: "New designs, restocks, and deals — straight to your inbox."
-- Email input + Subscribe button
-- Background: `--color-secondary` (sage) with white text
-- Uses Shopify's native newsletter form
+**Form — "Tell us about you"** (note: "All fields marked * are required.")
 
-### 8. Footer (`pbs-footer` via footer group)
-- Logo: `assets/logo-dark.svg` (white/cream version for dark footer background)
-- Render via `<img>` tag pointing to `'logo-dark.svg' | asset_url`
-- Columns: Quick Links (Shop, Collections, Contact, FAQ), Follow Us (social icons), Newsletter teaser
-- Payment icons row
-- Copyright: "© {year} PrintsByShay · Powered by Shopify"
-- Background: `--color-text` (charcoal), text: `--color-sand`
+*Contact info:*
+- Full Name*
+- Email*
+- Phone*
+- City / ZIP
 
----
+*License & Experience:*
+- Are you 21 or older?* (select)
+- License Class* (select)
+- License State (text)
+- Years Driving Commercially (select)
+- Box Truck Experience — select all that apply (checkboxes): 16 ft / 18 ft / 22 ft / 26 ft / Cargo / Sprinter / None
+- Clean Driving Record?* (select)
+- Willing to pass background & drug screen?* (select)
 
-## File Structure
+*Availability:*
+- Availability* (select)
+- Earliest Start Date (date input)
+- Previous Employer / Driving Experience (textarea, placeholder: "Where have you driven? Routes, freight type, years...")
+- Anything else we should know? (textarea, optional, placeholder: "Optional")
 
-Follow standard OS 2.0 layout. Use `pbs-` prefix on all custom sections to avoid conflicts:
+**Submit:** "Submit Application" button. In the Lovable version this opens the visitor's email app with a pre-filled `mailto:` to familybondsolutionsllc@gmail.com (client-side JS builds the mailto link from form values) rather than a server-side submission. Helper text: "Submitting opens your email app with your application pre-filled to familybondsolutionsllc@gmail.com. We reply within one business day."
 
-```
-layout/
-  theme.liquid
-sections/
-  pbs-announcement-bar.liquid
-  pbs-header.liquid
-  pbs-hero.liquid
-  pbs-featured-products.liquid
-  pbs-collections-grid.liquid
-  pbs-about.liquid
-  pbs-email-signup.liquid
-  pbs-footer.liquid
-  main-product.liquid
-  main-collection.liquid
-  main-page.liquid
-  main-cart.liquid
-  main-404.liquid
-snippets/
-  css-variables.liquid
-  product-card.liquid
-  meta-tags.liquid
-assets/
-  base.css
-  global.js
-  logo-light.svg        ← light background version (cream bg, dark text)
-  logo-dark.svg         ← dark background version (charcoal bg, light text)
-templates/
-  index.json
-  product.json
-  collection.json
-  page.json
-  cart.json
-  404.json
-config/
-  settings_schema.json
-  settings_data.json
-locales/
-  en.default.json
-  en.default.schema.json
-```
+**Decision:** Use a native Shopify contact form (same pattern as the quote form) — mailto is unreliable on devices without a configured mail client, and this keeps both forms consistent and delivery-guaranteed through Shopify's inbox.
+
+## Quote Form (native Shopify contact form)
+Build via `{% form 'contact' %}`, fields:
+- Full Name* (text)
+- Company (text)
+- Email* (email)
+- Phone* (tel)
+- Service Needed (select: Box Truck Delivery / Medical Courier / On-Demand Courier / Recurring Route / Other)
+- Delivery Details (textarea — pickup/drop-off, size, frequency, timing)
+
+Submissions land in Shopify's contact message inbox, same as Tricia's Treats.
 
 ---
 
-## Key Patterns & Rules
+## File Structure (OS 2.0, per shopify-theme skill starter)
+Standard starter scaffold, customized with:
+- `sections/fbs-hero.liquid`
+- `sections/fbs-stats.liquid`
+- `sections/fbs-services.liquid`
+- `sections/fbs-medical-feature.liquid`
+- `sections/fbs-service-area.liquid`
+- `sections/fbs-why-us.liquid`
+- `sections/fbs-drivers.liquid`
+- `sections/fbs-quote.liquid` (wraps native contact form)
+- `sections/fbs-apply.liquid` (driver application form — see spec below)
+- `templates/index.json` referencing all of the above in order
+- `templates/page.apply.json` referencing `fbs-apply` (create a matching Page in Shopify admin titled "Apply" / "Driver Application")
+- `snippets/css-variables.liquid` updated with brand token defaults above
+- `assets/fbs-logo.jpeg` (from upload), hero/driver/medical stock imagery to be sourced or replaced with real photos
 
-1. **All colors, fonts, and spacing driven by CSS custom properties** from `snippets/css-variables.liquid` — never hardcode hex values in section CSS.
-2. **Images:** Always use `image_url` + `image_tag` for responsive output. Never hardcode CDN URLs. Never chain `| escape` after `image_tag` — it will silently break image rendering.
-3. **Text strings:** Use `| t` filter + `locales/en.default.json` for all user-facing strings.
-4. **URLs:** Use `routes.*` — never hardcode `/collections/all` or similar.
-5. **Block wrappers:** Always emit `{{ block.shopify_attributes }}` on block elements so the theme editor works.
-6. **Presets:** Every content section (`pbs-hero`, `pbs-about`, etc.) must have a `presets` block in its schema so merchants can add it from the editor.
-7. **`main-*` sections:** No preset needed — they're placed by templates directly.
-8. **JSON is pure JSON:** No Liquid, no comments, no trailing commas inside `{% schema %}` blocks or `templates/*.json`.
-
----
-
-## Validation
-
-Before packaging:
-
-```bash
-# Check JSON validity
-find . -name '*.json' -print0 | xargs -0 -I{} python3 -c "import json,sys; json.load(open('{}'))" 
-
-# Run Shopify linter
-shopify theme check
-
-# Preview locally
-shopify theme dev
-```
-
-Run `scripts/validate-theme.py` if present — checks JSON validity, embedded schema, cross-references, and Liquid filter-chaining bugs.
+All copy, headings, and list items should be pulled directly from the Lovable export text captured above — don't paraphrase or invent new marketing copy unless Shay asks for a rewrite.
 
 ---
 
-## Delivery Notes
+## Coding Rules (carry over from other clients)
+- Drive all styling from theme settings via CSS custom properties — no hardcoded hex in section files.
+- Watch for the `image_tag` + trailing filter chaining bug (documented in prior client builds) — never chain `| escape` or similar after `image_tag`'s named parameters.
+- Use `routes.*` and `| t` for locale-safe links/text.
+- Every content section needs a `preset` in its schema so it's insertable in the theme editor.
+- Run `scripts/validate-theme.py` (or equivalent) before packaging.
 
-- Push using `shopify theme push --theme THEME_ID` to avoid creating duplicate themes
-- Run `shopify theme list` first to get the correct theme ID
-- Dev store preview is mandatory before final delivery — structural validation alone is not sufficient
-- Repo: `~/Projects/shopify-clients/prints-by-shay`
-- GitHub: ChefShay918 / `prints-by-shay`
+## Validation Steps
+1. `shopify theme check`
+2. JSON parse check on all schema blocks and templates
+3. **Dev store preview is mandatory** — render the actual page, don't rely on structural checks alone
+4. Confirm native contact form submissions route correctly before calling this production-ready
 
 ---
 
-## What This Is NOT
-
-- No custom order/upload flow
-- No app development
-- No Hydrogen / headless
-- No live store data via Admin API
+## Open Questions for Shay
+- Exact secondary dark panel hex (sampled range only — confirm against live Lovable preview if possible, since the CSS file wasn't fetchable from this environment)
+- Real photography for hero/driver/medical images vs. keeping stock placeholders

@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "fbs-drivers": {
+      "type": "fbs-drivers",
+      "settings": {
+        "heading": "Drive Medical Courier Routes With People Who Treat You Like Family",
+        "subheading": "We're hiring medical courier drivers first, with box truck, sprinter, and cargo van roles also available.",
+        "requirements": "21+ with valid driver's license\nClean driving record\nPass background & drug screen\nSmartphone with data\nBusiness casual attire",
+        "offers": "Consistent, local routes\nFamily-owned culture\nWeekly pay\nRoom to grow",
+        "cta_label": "Apply Online",
+        "cta_url": "/pages/apply-or-driver-application"
+      }
+    }
+  },
+  "order": ["fbs-drivers"]
+}

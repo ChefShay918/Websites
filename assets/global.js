@@ -1,4 +1,4 @@
-/* global.js — PrintsByShay */
+/* global.js — Family Bond Solutions LLC */
 
 (function () {
   'use strict';
@@ -13,31 +13,24 @@
     onScroll();
   }
 
-  /* ── Product thumbnails ──────────────────────────────────── */
-  document.querySelectorAll('.product-thumbnail').forEach((thumb) => {
-    thumb.addEventListener('click', () => {
-      const src = thumb.dataset.src;
-      const mainImg = document.querySelector('.product-media__main img');
-      if (mainImg && src) {
-        mainImg.src = src;
-        document.querySelectorAll('.product-thumbnail').forEach((t) =>
-          t.classList.remove('is-active')
-        );
-        thumb.classList.add('is-active');
-      }
+  /* ── Mobile nav toggle ────────────────────────────────────── */
+  const menuToggle = document.querySelector('.site-header__menu-toggle');
+  const siteNav = document.querySelector('.site-nav');
+  if (menuToggle && siteNav) {
+    const closeMenu = () => {
+      siteNav.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+    menuToggle.addEventListener('click', () => {
+      const isOpen = siteNav.classList.toggle('is-open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
-  });
-
-  /* ── Cart quantity controls ──────────────────────────────── */
-  document.querySelectorAll('.cart-item__qty-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const input = btn.closest('.cart-item__qty').querySelector('.cart-item__qty-input');
-      if (!input) return;
-      const delta = btn.dataset.action === 'increase' ? 1 : -1;
-      const newVal = Math.max(0, parseInt(input.value, 10) + delta);
-      input.value = newVal;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
     });
-  });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
 
 })();
