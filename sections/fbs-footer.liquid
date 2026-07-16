@@ -14,6 +14,16 @@
       {{- section.settings.contact_email -}}
     </a>
 
+    {%- if section.settings.instagram_url != blank -%}
+      <a class="site-footer__social-icon" href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    {%- endif -%}
+
     <p class="site-footer__copyright">
       &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &middot; {{ 'sections.footer.powered_by' | t }}
     </p>
@@ -32,6 +42,11 @@
       "id": "contact_email",
       "label": "Contact email",
       "default": "familybondsolutionsllc@gmail.com"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
     }
   ]
 }

@@ -8,6 +8,11 @@
           widths: '400, 700, 1000, 1200',
           sizes: '(min-width: 768px) 50vw, 100vw'
         }}
+      {%- else -%}
+        {{ 'fbs-medical-photo.jpg' | asset_url | image_tag:
+          loading: 'lazy',
+          alt: section.settings.heading
+        }}
       {%- endif -%}
     </div>
 

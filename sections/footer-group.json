@@ -5,7 +5,8 @@
     "footer": {
       "type": "fbs-footer",
       "settings": {
-        "contact_email": "familybondsolutionsllc@gmail.com"
+        "contact_email": "familybondsolutionsllc@gmail.com",
+        "instagram_url": "https://www.instagram.com/fbs_llc"
       }
     }
   },

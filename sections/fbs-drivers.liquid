@@ -51,6 +51,11 @@
           widths: '400, 600, 900',
           sizes: '(min-width: 768px) 40vw, 100vw'
         }}
+      {%- else -%}
+        {{ 'fbs-driver-photo.jpg' | asset_url | image_tag:
+          loading: 'lazy',
+          alt: section.settings.heading
+        }}
       {%- endif -%}
       <span class="fbs-drivers__callout">{{ 'sections.drivers.join_the_team' | t }}</span>
     </div>

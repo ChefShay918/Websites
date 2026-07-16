@@ -8,6 +8,13 @@
       widths: '750, 1100, 1500, 2000',
       sizes: '100vw'
     }}
+  {%- else -%}
+    {{ 'fbs-hero-photo.jpg' | asset_url | image_tag:
+      class: 'fbs-hero__bg-image',
+      loading: 'eager',
+      fetchpriority: 'high',
+      alt: shop.name
+    }}
   {%- endif -%}
 
   <div
