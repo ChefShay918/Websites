@@ -97,7 +97,7 @@
       "field_experience_placeholder": "Where have you driven? Routes, freight type, years...",
       "field_other": "Anything else we should know?",
       "field_other_placeholder": "Optional",
-      "print_label": "Print Application",
+      "print_label": "Preview & Print (without submitting)",
       "option_yes": "Yes",
       "option_no": "No",
       "option_other": "Other",
@@ -121,7 +121,7 @@
       "availability_weekends": "Weekends only",
       "availability_on_call": "On-call / As needed",
       "submit_label": "Submit Application",
-      "helper_text": "Submitting sends your application to our team. We reply within one business day.",
+      "helper_text": "Submitting sends your application to our team and opens a print dialog so you can save or print a copy for your records. We reply within one business day.",
       "success_message": "Thanks — your application has been sent. We'll follow up within one business day.",
       "error_message": "Something went wrong. Please check the form and try again."
     },

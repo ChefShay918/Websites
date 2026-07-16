@@ -45,7 +45,7 @@
       return div.innerHTML;
     };
 
-    printBtn.addEventListener('click', () => {
+    const buildAndPrint = () => {
       applyForm.querySelectorAll('[data-print-checkbox-summary]').forEach((hidden) => {
         const groupKey = hidden.dataset.printCheckboxSummary;
         const checked = Array.from(
@@ -87,7 +87,16 @@
 
       printSummary.innerHTML = html;
       window.print();
-    });
+    };
+
+    printBtn.addEventListener('click', buildAndPrint);
+
+    /* Also print automatically right before the real submission goes
+       through, so one click on "Submit Application" both sends the
+       application and gives the applicant a copy. Native HTML
+       validation runs before 'submit' fires, so this only triggers
+       once required fields are actually filled in. */
+    applyForm.addEventListener('submit', buildAndPrint);
   }
 
 })();
