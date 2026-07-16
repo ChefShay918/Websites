@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "fbs-why-us": {
+      "type": "fbs-why-us",
+      "blocks": {
+        "reason-ontime": { "type": "reason", "settings": { "title": "On-Time Guarantee", "description": "We build in buffer time so your delivery arrives when we say it will." } },
+        "reason-insured": { "type": "reason", "settings": { "title": "Fully Insured", "description": "Every run is covered, giving you peace of mind on every load." } },
+        "reason-family": { "type": "reason", "settings": { "title": "Family Owned", "description": "A local, family-run business that treats every customer like a neighbor." } },
+        "reason-local": { "type": "reason", "settings": { "title": "Local Knowledge", "description": "We know Tulsa's roads, routes, and neighborhoods inside and out." } }
+      },
+      "block_order": ["reason-ontime", "reason-insured", "reason-family", "reason-local"],
+      "settings": {
+        "heading": "Why Choose Us"
+      }
+    }
+  },
+  "order": ["fbs-why-us"]
+}

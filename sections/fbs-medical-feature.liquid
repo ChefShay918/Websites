@@ -19,7 +19,7 @@
         <div class="fbs-medical-feature__body rte">{{ section.settings.body }}</div>
       {%- endif -%}
       {%- if section.settings.cta_label != blank -%}
-        <a class="btn btn--primary" href="{{ section.settings.cta_url | default: '#quote' }}">
+        <a class="btn btn--primary" href="{{ section.settings.cta_url | default: '/pages/contact' }}">
           {{- section.settings.cta_label | escape -}}
         </a>
       {%- endif -%}

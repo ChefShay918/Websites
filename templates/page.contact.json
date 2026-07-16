@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "fbs-quote": {
+      "type": "fbs-quote",
+      "settings": {
+        "heading": "Request a Delivery Quote",
+        "body": "Tell us about your delivery and we'll follow up within one business day.",
+        "contact_email": "familybondsolutionsllc@gmail.com"
+      }
+    }
+  },
+  "order": ["fbs-quote"]
+}

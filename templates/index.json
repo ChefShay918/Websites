@@ -7,6 +7,7 @@
         "heading": "Tulsa's trusted box truck & medical courier",
         "subheading": "Same-day box truck delivery, HIPAA-aware medical courier runs, and on-demand pickups across the Tulsa metro.",
         "primary_cta_label": "Request a Delivery Quote",
+        "primary_cta_url": "/pages/contact",
         "secondary_cta_label": "Drive With Us",
         "secondary_cta_url": "/pages/apply",
         "overlay_opacity": 40
@@ -22,100 +23,6 @@
       },
       "block_order": ["stat-fleet", "stat-dispatch", "stat-tulsa", "stat-ontime"]
     },
-    "fbs-services": {
-      "type": "fbs-services",
-      "blocks": {
-        "service-box-truck": {
-          "type": "service",
-          "settings": {
-            "icon": "box-truck",
-            "title": "Box Truck Delivery",
-            "description": "Last-mile and recurring routes, plus pallet and LTL freight.",
-            "checklist": "Last-mile delivery\nRecurring routes\nPallet & LTL freight"
-          }
-        },
-        "service-medical": {
-          "type": "service",
-          "settings": {
-            "icon": "medical",
-            "title": "Medical Courier",
-            "description": "Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody.",
-            "checklist": "Lab specimen transport\nPharmacy runs\nHIPAA-aware handling",
-            "highlighted": true
-          }
-        },
-        "service-on-demand": {
-          "type": "service",
-          "settings": {
-            "icon": "on-demand",
-            "title": "On-Demand Courier",
-            "description": "Same-day pickup and delivery for documents and parts via sprinter or cargo van.",
-            "checklist": "Same-day pickup/delivery\nDocuments & parts\nSprinter & cargo van"
-          }
-        }
-      },
-      "block_order": ["service-box-truck", "service-medical", "service-on-demand"],
-      "settings": {
-        "heading": "Our Services"
-      }
-    },
-    "fbs-medical-feature": {
-      "type": "fbs-medical-feature",
-      "settings": {
-        "heading": "Medical Courier You Can Trust",
-        "body": "<p>Lab specimens, pharmacy runs, and confidential records handled with strict chain-of-custody. Our drivers are trained for HIPAA-aware pickups and deliveries across the Tulsa metro.</p>",
-        "cta_label": "Request Medical Service"
-      }
-    },
-    "fbs-service-area": {
-      "type": "fbs-service-area",
-      "blocks": {
-        "city-tulsa": { "type": "city", "settings": { "city": "Tulsa" } },
-        "city-broken-arrow": { "type": "city", "settings": { "city": "Broken Arrow" } },
-        "city-owasso": { "type": "city", "settings": { "city": "Owasso" } },
-        "city-bixby": { "type": "city", "settings": { "city": "Bixby" } },
-        "city-jenks": { "type": "city", "settings": { "city": "Jenks" } },
-        "city-sapulpa": { "type": "city", "settings": { "city": "Sapulpa" } },
-        "city-sand-springs": { "type": "city", "settings": { "city": "Sand Springs" } },
-        "city-claremore": { "type": "city", "settings": { "city": "Claremore" } },
-        "city-muskogee": { "type": "city", "settings": { "city": "Muskogee" } },
-        "city-bartlesville": { "type": "city", "settings": { "city": "Bartlesville" } },
-        "city-skiatook": { "type": "city", "settings": { "city": "Skiatook" } },
-        "city-okmulgee": { "type": "city", "settings": { "city": "Okmulgee" } }
-      },
-      "block_order": [
-        "city-tulsa", "city-broken-arrow", "city-owasso", "city-bixby", "city-jenks",
-        "city-sapulpa", "city-sand-springs", "city-claremore", "city-muskogee",
-        "city-bartlesville", "city-skiatook", "city-okmulgee"
-      ],
-      "settings": {
-        "heading": "Where We Deliver"
-      }
-    },
-    "fbs-why-us": {
-      "type": "fbs-why-us",
-      "blocks": {
-        "reason-ontime": { "type": "reason", "settings": { "title": "On-Time Guarantee", "description": "We build in buffer time so your delivery arrives when we say it will." } },
-        "reason-insured": { "type": "reason", "settings": { "title": "Fully Insured", "description": "Every run is covered, giving you peace of mind on every load." } },
-        "reason-family": { "type": "reason", "settings": { "title": "Family Owned", "description": "A local, family-run business that treats every customer like a neighbor." } },
-        "reason-local": { "type": "reason", "settings": { "title": "Local Knowledge", "description": "We know Tulsa's roads, routes, and neighborhoods inside and out." } }
-      },
-      "block_order": ["reason-ontime", "reason-insured", "reason-family", "reason-local"],
-      "settings": {
-        "heading": "Why Choose Us"
-      }
-    },
-    "fbs-drivers": {
-      "type": "fbs-drivers",
-      "settings": {
-        "heading": "Drive Medical Courier Routes With People Who Treat You Like Family",
-        "subheading": "We're hiring medical courier drivers first, with box truck, sprinter, and cargo van roles also available.",
-        "requirements": "21+ with valid driver's license\nClean driving record\nPass background & drug screen\nSmartphone with data\nBusiness casual attire",
-        "offers": "Consistent, local routes\nFamily-owned culture\nWeekly pay\nRoom to grow",
-        "cta_label": "Apply Online",
-        "cta_url": "/pages/apply"
-      }
-    },
     "fbs-quote": {
       "type": "fbs-quote",
       "settings": {
@@ -128,11 +35,6 @@
   "order": [
     "fbs-hero",
     "fbs-stats",
-    "fbs-services",
-    "fbs-medical-feature",
-    "fbs-service-area",
-    "fbs-why-us",
-    "fbs-drivers",
     "fbs-quote"
   ]
 }
