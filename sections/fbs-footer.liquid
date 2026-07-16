@@ -24,6 +24,17 @@
       </a>
     {%- endif -%}
 
+    {%- if shop.privacy_policy or shop.terms_of_service -%}
+      <ul class="site-footer__legal-links">
+        {%- if shop.privacy_policy -%}
+          <li><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>
+        {%- endif -%}
+        {%- if shop.terms_of_service -%}
+          <li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+
     <p class="site-footer__copyright">
       &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &middot; {{ 'sections.footer.powered_by' | t }}
     </p>

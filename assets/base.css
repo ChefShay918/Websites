@@ -952,6 +952,24 @@ h4 { font-size: 1.0625rem; }
   color: var(--color-primary);
 }
 
+.site-footer__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.site-footer__legal-links a {
+  opacity: 0.7;
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.site-footer__legal-links a:hover {
+  opacity: 1;
+}
+
 .site-footer__copyright {
   font-size: 0.875rem;
   opacity: 0.6;
