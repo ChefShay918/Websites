@@ -119,6 +119,12 @@ h4 { font-size: 1.0625rem; }
   border: 2px solid var(--color-white);
 }
 
+.btn--outline-dark {
+  background-color: transparent;
+  color: var(--color-foreground);
+  border: 2px solid var(--color-border);
+}
+
 /* ============================================================
    Header
    ============================================================ */
@@ -889,6 +895,76 @@ h4 { font-size: 1.0625rem; }
 .fbs-apply__helper-text {
   font-size: 0.8125rem;
   opacity: 0.7;
+}
+
+.fbs-apply__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   Printable Application Summary
+   ============================================================ */
+
+.fbs-print-only {
+  display: none;
+}
+
+@media print {
+  body > *:not(#fbs-print-summary) {
+    display: none !important;
+  }
+
+  .fbs-print-only {
+    display: block !important;
+    color: #000;
+    background: #fff;
+    padding: 0.5in;
+  }
+
+  .fbs-print-only h1 {
+    font-family: inherit;
+    text-transform: none;
+    font-size: 1.375rem;
+    margin-bottom: 0.125rem;
+  }
+
+  .fbs-print-only .fbs-print-date {
+    font-size: 0.8125rem;
+    color: #555;
+    margin-bottom: 1.25rem;
+  }
+
+  .fbs-print-only h2 {
+    font-family: inherit;
+    text-transform: none;
+    font-size: 1.0625rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.25rem;
+  }
+
+  .fbs-print-row {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.9375rem;
+    break-inside: avoid;
+  }
+
+  .fbs-print-label {
+    font-weight: 700;
+    min-width: 260px;
+    flex-shrink: 0;
+  }
+
+  .fbs-print-value {
+    flex: 1;
+  }
 }
 
 @media (max-width: 900px) {
