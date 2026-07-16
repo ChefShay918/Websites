@@ -93,7 +93,7 @@
       "field_background_check": "Willing to pass background & drug screen?*",
       "field_availability": "Availability*",
       "field_start_date": "Earliest Start Date",
-      "field_experience": "Previous Employer / Driving Experience",
+      "field_experience": "Previous Employer / Driving Experience*",
       "field_experience_placeholder": "Where have you driven? Routes, freight type, years...",
       "field_other": "Anything else we should know?",
       "field_other_placeholder": "Optional",
