@@ -13,6 +13,7 @@
     "header": {
       "navigation_label": "Main navigation",
       "cta_label": "Get a Quote",
+      "menu_label": "Toggle menu",
       "nav": {
         "services": "Services",
         "why_us": "Why Us",

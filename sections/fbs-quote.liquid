@@ -2,7 +2,11 @@
   <div class="container fbs-quote__inner">
     <div class="fbs-quote__info">
       {%- if section.settings.heading != blank -%}
-        <h2 class="fbs-quote__heading">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.heading_tag == 'h1' -%}
+          <h1 class="fbs-quote__heading">{{ section.settings.heading | escape }}</h1>
+        {%- else -%}
+          <h2 class="fbs-quote__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
       {%- endif -%}
       {%- if section.settings.body != blank -%}
         <p class="fbs-quote__body">{{ section.settings.body }}</p>
@@ -89,6 +93,17 @@
       "id": "contact_email",
       "label": "Contact email",
       "default": "familybondsolutionsllc@gmail.com"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading level",
+      "info": "Use Page title (h1) only when this is the main heading of the page it's on.",
+      "options": [
+        { "value": "h2", "label": "Section heading (h2)" },
+        { "value": "h1", "label": "Page title (h1)" }
+      ],
+      "default": "h2"
     }
   ],
   "presets": [
