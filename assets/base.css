@@ -913,12 +913,21 @@ h4 { font-size: 1.0625rem; }
 }
 
 @media print {
-  body > *:not(#fbs-print-summary) {
-    display: none !important;
+  body * {
+    visibility: hidden;
+  }
+
+  #fbs-print-summary,
+  #fbs-print-summary * {
+    visibility: visible;
   }
 
   .fbs-print-only {
     display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     color: #000;
     background: #fff;
     padding: 0.5in;
