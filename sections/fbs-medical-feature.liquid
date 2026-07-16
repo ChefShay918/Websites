@@ -9,10 +9,11 @@
           sizes: '(min-width: 768px) 50vw, 100vw'
         }}
       {%- else -%}
-        {{ 'fbs-medical-photo.jpg' | asset_url | image_tag:
-          loading: 'lazy',
-          alt: section.settings.heading
-        }}
+        <img
+          src="{{ 'fbs-medical-photo.jpg' | asset_url }}"
+          loading="lazy"
+          alt="{{ section.settings.heading }}"
+        >
       {%- endif -%}
     </div>
 
