@@ -157,9 +157,6 @@ h4 { font-size: 1.0625rem; }
 }
 
 .site-header__logo {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
-  padding: 0.375rem 0.75rem;
   display: flex;
   align-items: center;
 }
@@ -929,9 +926,6 @@ h4 { font-size: 1.0625rem; }
 }
 
 .site-footer__logo {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
-  padding: 0.375rem 0.75rem;
   display: inline-flex;
 }
 
