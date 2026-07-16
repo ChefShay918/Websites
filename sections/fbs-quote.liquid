@@ -18,54 +18,21 @@
     </div>
 
     <div class="fbs-quote__form-wrap">
-      {%- form 'contact', class: 'fbs-quote__form' -%}
-        {%- if form.posted_successfully? -%}
-          <p class="fbs-quote__success">{{ 'sections.quote.success_message' | t }}</p>
-        {%- endif -%}
-        {%- if form.errors -%}
-          <p class="fbs-quote__error">{{ 'sections.quote.error_message' | t }}</p>
-        {%- endif -%}
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormName">{{ 'sections.quote.field_name' | t }}</label>
-          <input type="text" id="ContactFormName" name="contact[name]" required>
-        </div>
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormCompany">{{ 'sections.quote.field_company' | t }}</label>
-          <input type="text" id="ContactFormCompany" name="contact[Company]">
-        </div>
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormEmail">{{ 'sections.quote.field_email' | t }}</label>
-          <input type="email" id="ContactFormEmail" name="contact[email]" spellcheck="false" autocapitalize="off" required>
-        </div>
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormPhone">{{ 'sections.quote.field_phone' | t }}</label>
-          <input type="tel" id="ContactFormPhone" name="contact[phone]" required>
-        </div>
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormService">{{ 'sections.quote.field_service' | t }}</label>
-          <select id="ContactFormService" name="contact[Service Needed]">
-            <option value="Box Truck & Van Delivery">{{ 'sections.quote.service_box_truck' | t }}</option>
-            <option value="Medical Courier">{{ 'sections.quote.service_medical' | t }}</option>
-            <option value="On-Demand Courier">{{ 'sections.quote.service_on_demand' | t }}</option>
-            <option value="Recurring Route">{{ 'sections.quote.service_recurring' | t }}</option>
-            <option value="Other">{{ 'sections.quote.service_other' | t }}</option>
-          </select>
-        </div>
-
-        <div class="fbs-quote__field">
-          <label for="ContactFormBody">{{ 'sections.quote.field_details' | t }}</label>
-          <textarea id="ContactFormBody" name="contact[body]" rows="4" placeholder="{{ 'sections.quote.field_details_placeholder' | t }}"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--primary fbs-quote__submit">
-          {{- 'sections.quote.submit_label' | t -}}
-        </button>
-      {%- endform -%}
+      <iframe
+        id="JotFormIFrame-{{ section.settings.jotform_id }}"
+        title="{{ 'sections.quote.label' | t }}"
+        onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true"
+        allow="geolocation; microphone; camera"
+        src="https://form.jotform.com/{{ section.settings.jotform_id }}"
+        frameborder="0"
+        style="min-width:100%;max-width:100%;height:900px;border:none;"
+        scrolling="no"
+      ></iframe>
+      <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+      <script>
+        window.jotformEmbedHandler("iframe[id='JotFormIFrame-{{ section.settings.jotform_id }}']", "https://form.jotform.com");
+      </script>
     </div>
   </div>
 </section>
@@ -104,6 +71,13 @@
         { "value": "h1", "label": "Page title (h1)" }
       ],
       "default": "h2"
+    },
+    {
+      "type": "text",
+      "id": "jotform_id",
+      "label": "JotForm form ID",
+      "info": "The numeric ID from the JotForm URL (e.g. form.jotform.com/261967084325060 → 261967084325060)",
+      "default": "261967084325060"
     }
   ],
   "presets": [
